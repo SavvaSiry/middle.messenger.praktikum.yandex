@@ -21,11 +21,11 @@ npm run start
 Проект в [Figma](https://www.figma.com/file/NvuI2IpdFw0rjGiZroI8Pt/Chat_external_link-(Savva)?type=design&node-id=0%3A1&mode=design&t=3LNtaRPCE6bBLfd2-1)
 
 ### Ознакомиться с проектом на [netlify](https://65228379d8194b0008b1800b--animated-melomakarona-48f294.netlify.app/)
-Страница [авторизации](https://65228379d8194b0008b1800b--animated-melomakarona-48f294.netlify.app/login)
-Страница [регестрации](https://65228379d8194b0008b1800b--animated-melomakarona-48f294.netlify.app/signin)
-Страница [профиля](https://65228379d8194b0008b1800b--animated-melomakarona-48f294.netlify.app/profile)
-Странциа [чата](https://65228379d8194b0008b1800b--animated-melomakarona-48f294.netlify.app/chat)
-Страница [ошибки 404](https://65228379d8194b0008b1800b--animated-melomakarona-48f294.netlify.app/error404)
-Страница [ошибки 500](https://65228379d8194b0008b1800b--animated-melomakarona-48f294.netlify.app/error500)
+- Страница [авторизации](https://65228379d8194b0008b1800b--animated-melomakarona-48f294.netlify.app/login)
+- Страница [регестрации](https://65228379d8194b0008b1800b--animated-melomakarona-48f294.netlify.app/signin)
+- Страница [профиля](https://65228379d8194b0008b1800b--animated-melomakarona-48f294.netlify.app/profile)
+- Странциа [чата](https://65228379d8194b0008b1800b--animated-melomakarona-48f294.netlify.app/chat)
+- Страница [ошибки 404](https://65228379d8194b0008b1800b--animated-melomakarona-48f294.netlify.app/error404)
+- Страница [ошибки 500](https://65228379d8194b0008b1800b--animated-melomakarona-48f294.netlify.app/error500)
 
 

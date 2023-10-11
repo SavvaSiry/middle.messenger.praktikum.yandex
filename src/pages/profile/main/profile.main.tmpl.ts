@@ -47,13 +47,13 @@ export const tmpl = `
         </ul>
         <ul class="profile__content__list">
             <li class="profile__content__list__item">
-                <span class="text_info">Изменить данные</span>
+                <a class="text_info" href="/profile-edit">Изменить данные</a>
             </li>
             <li class="profile__content__list__item">
-                <span class="text_info">Изменить пароль</span>
+                <a class="text_info">Изменить пароль</a>
             </li>
             <li class="profile__content__list__item">
-                <span class="text_danger">Выйти</span>
+                <a class="text_danger">Выйти</a>
             </li>
         </ul>
     </div>

@@ -5,16 +5,16 @@ export const tmpl = `
             <div class="card__container">
                 <h1 class="card__title">Вход</h1>
                 <div class="login-form__field">
-                    <div class="login-form__label text_light" for="username">Логин</div>
+                    <label class="login-form__label text_light" for="username">Логин</label>
                     <input class="login-form__input" type="text" id="username" name="username" required>
                 </div>
                 <div class="login-form__field">
-                    <div class="login-form__label text_light" for="password">Пароль</div>
+                    <label class="login-form__label text_light" for="password">Пароль</label>
                     <input class="login-form__input" type="password" id="password" name="password" required>
                 </div>
             </div>
             <div class="card__container">
-                <button class="login-form__button" type="submit">Войти</button>
+                <button class="button" type="submit">Войти</button>
                 <a class="card__link" href="/signin">Нет аккаунта?</a>
             </div>
         </form>

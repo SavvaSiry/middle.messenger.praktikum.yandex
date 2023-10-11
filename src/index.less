@@ -116,8 +116,9 @@ body {
   }
 }
 
-.login-form__button {
+.button {
   width: 100%;
+  max-width: 280px;
   padding: 10px 20px;
   background-color: @colorBlueAccent;
   color: white;
@@ -127,7 +128,7 @@ body {
   font-size: 14px;
 }
 
-.login-form__button:hover {
+.button:hover {
   background-color: @colorBlueAccentHover;
 }
 
@@ -265,5 +266,22 @@ body {
 
   &:last-child {
     border-bottom: none;
+  }
+}
+
+//profile-edit
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
+.profile-form__input {
+  outline: none;
+  border: none;
+
+  &:focus {
+    border-bottom: solid 1px @colorBlueAccent;
   }
 }

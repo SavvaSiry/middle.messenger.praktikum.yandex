@@ -34,7 +34,7 @@ export const tmpl = `
                 </div>
             </div>
             <div class="card__container">
-                <button class="login-form__button" type="submit">Зарегестрироваться</button>
+                <button class="button" type="submit">Зарегестрироваться</button>
                 <a class="card__link" href="/login">Войти</a>
             </div>
         </form>

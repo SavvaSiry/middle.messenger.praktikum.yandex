@@ -22,28 +22,16 @@ export const tmpl = `
         <form class="profile-form">
             <ul class="profile__content__list">
                 <li class="profile__content__list__item">
-                    <label class="text_dark" for="email">Почта</label>
-                    <input class="profile-form__input text_light" name="email" type="text">
+                    <label class="text_dark" for="email">Старый пароль</label>
+                    <input class="profile-form__input" name="oldPassword" type="password" placeholder="*********">
                 </li>
                 <li class="profile__content__list__item">
-                    <label class="text_dark" for="login">Логин</label>
-                    <input class="profile-form__input text_light" name="login" type="text">
+                    <label class="text_dark" for="login">Новый пароль</label>
+                    <input class="profile-form__input" name="newPassword" type="password" placeholder="*********">
                 </li>
                 <li class="profile__content__list__item">
-                    <label class="text_dark" for="first_name">Имя</label>
-                    <input class="profile-form__input text_light" name="first_name" type="text">
-                </li>
-                <li class="profile__content__list__item">
-                    <label class="text_dark" for="second_name">Фамилия</label>
-                    <input class="profile-form__input text_light" name="second_name" type="text">
-                </li>
-                <li class="profile__content__list__item">
-                    <label class="text_dark" for="display_name">Имя в чате</label>
-                    <input class="profile-form__input text_light" name="display_name" type="text">
-                </li>
-                <li class="profile__content__list__item">
-                    <label class="text_dark" for="phone">Телефон</label>
-                    <input class="profile-form__input text_light" name="phone" type="number">
+                    <label class="text_dark" for="first_name">Повторите новый пароль</label>
+                    <input class="profile-form__input" name="newPassword" type="password" placeholder="*********">
                 </li>
             </ul>
             <button class="button" type="submit">Сохранить</button>

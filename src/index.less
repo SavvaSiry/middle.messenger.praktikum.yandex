@@ -1,22 +1,22 @@
-@width: 30px;
-@height: @width + 10px;
-@buttonBackground: #ff0000;
+//Border radius
 @buttonRadius: 8px;
 @cardRadius: 8px;
-@cardBoxShadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.14);
-
-//button {
-//  width: @width;
-//  height: @height;
-//  background: @buttonBackground;
-//}
+//Colors
+@colorBlueAccent: #3369F3;
+@colorBlueAccentHover: #0056b3;
+@colorGrey: #FBFBFB;
+@colorGreyAccent: #EAEAEA;
+@colorBlack: #1E1E1E;
+@colorBlackLight: #999999;
+@colorDanger: #FF0000;
+@colorProfileAvatar: #EFEFEF;
 
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
 }
 
-.flex-middle-container {
+.flex_middle_container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,21 +24,20 @@ body {
 }
 
 // Text
-
 .text_dark {
-  color: #1E1E1E;
+  color: @colorBlack;
 }
 
 .text_light {
-  color: #999999;
+  color: @colorBlackLight;
 }
 
 .text_info {
-  color: #3369F3;
+  color: @colorBlueAccent;
 }
 
 .text_danger {
-  color: #FF0000;
+  color: @colorDanger;
 }
 
 // Login and sign in forms
@@ -52,7 +51,7 @@ body {
   flex-direction: column;
   align-items: center;
 
-  background-color: #ffffff;
+  background-color: white;
   border-radius: @cardRadius;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -72,7 +71,7 @@ body {
 
 .card__link {
   margin-top: 15px;
-  color: #3369F3;
+  color: @colorBlueAccent;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
@@ -80,7 +79,7 @@ body {
   text-decoration: none;
 }
 
-.login-form {
+.login__form {
   width: 100%;
   height: 100%;
 
@@ -107,7 +106,7 @@ body {
 .login-form__input {
   padding: 10px 0;
   font-size: 13px;
-  border-bottom: solid 2px #3369F3;;
+  border-bottom: solid 2px @colorBlueAccent;
   border-top: none;
   border-left: none;
   border-right: none;
@@ -117,19 +116,19 @@ body {
   }
 }
 
-.login-form__button {
+.login_form__button {
   width: 100%;
   padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
+  background-color: @colorBlueAccent;
+  color: white;
   border: none;
   border-radius: @buttonRadius;
   cursor: pointer;
   font-size: 14px;
 }
 
-.login-form__button:hover {
-  background-color: #0056b3;
+.login_form__button:hover {
+  background-color: @colorBlueAccentHover;
 }
 
 // Error page
@@ -140,7 +139,7 @@ body {
 }
 
 .error__code {
-  color: #1E1E1E;
+  color: @colorBlack;
   font-size: 40px;
   font-style: normal;
   font-weight: 500;
@@ -149,7 +148,7 @@ body {
 }
 
 .error__title {
-  color: #1E1E1E;
+  color: @colorBlack;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
@@ -157,7 +156,7 @@ body {
 }
 
 .error__link {
-  color: #3369F3;
+  color: @colorBlueAccent;
   font-size: 11px;
   font-style: normal;
   font-weight: 500;
@@ -183,8 +182,8 @@ body {
   align-items: center;
   justify-content: center;
 
-  background: #FBFBFB;
-  box-shadow: 1px 0px 1px 0px #EAEAEA;
+  background: @colorGrey;
+  box-shadow: 1px 0px 1px 0px @colorGreyAccent;
 }
 
 .profile__content__avatar {
@@ -201,7 +200,7 @@ body {
   justify-content: center;
 
   border-radius: 50%;
-  background: #EFEFEF;
+  background: @colorProfileAvatar;
 
   &:hover {
     .profile__content__avatar_active {
@@ -226,7 +225,7 @@ body {
   justify-content: center;
 
   text-align: center;
-  color: #EAEAEA;
+  color: @colorGreyAccent;
 
   background: rgba(30, 30, 30, 0.5);
 
@@ -262,7 +261,7 @@ body {
 
   padding: 10px 0;
 
-  border-bottom: solid 1px #EAEAEA;
+  border-bottom: solid 1px @colorGreyAccent;
 
   &:last-child {
     border-bottom: none;

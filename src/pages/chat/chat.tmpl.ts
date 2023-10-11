@@ -1,5 +1,5 @@
 export const tmpl = `
-    <div class="flex-middle-container">
+    <main class="flex_middle_container">
         <h1>Тут пока ничего нет, но обязательно появится</h1>
-    </div>
+    </main>
 `

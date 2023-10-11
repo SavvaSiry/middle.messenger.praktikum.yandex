@@ -1,5 +1,5 @@
 export const tmpl = `
-<div class="profile">
+<main class="profile">
     <div class="profile__bar">
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
             <circle cx="14" cy="14" r="14" transform="rotate(-180 14 14)" fill="#3369F3"/>

@@ -1,5 +1,5 @@
 export const tmpl = `
-<div class="flex-middle-container">
+<main class="flex_middle_container">
     <div class="error">
         <div class="error__code">500</div>
         <div class="error__title">Мы уже фиксим</div>

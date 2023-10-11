@@ -1,7 +1,7 @@
 export const tmpl = `
-<main class="flex_middle_container">
+<div class="flex-middle-container">
     <div class="card">
-        <form class="login__form">
+        <form class="login-form">
             <div class="card__container">
                 <h1 class="card__title">Вход</h1>
                 <div class="login-form__field">
@@ -14,10 +14,10 @@ export const tmpl = `
                 </div>
             </div>
             <div class="card__container">
-                <button class="login_form__button" type="submit">Войти</button>
+                <button class="login-form__button" type="submit">Войти</button>
                 <a class="card__link" href="/signin">Нет аккаунта?</a>
             </div>
         </form>
     </div>
-</main>
+</div>
 `

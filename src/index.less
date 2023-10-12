@@ -1,0 +1,292 @@
+//Border radius
+@buttonRadius: 8px;
+@cardRadius: 8px;
+//Colors
+@colorBlueAccent: #3369F3;
+@colorBlueAccentHover: #0056b3;
+@colorGrey: #FBFBFB;
+@colorGreyAccent: #EAEAEA;
+@colorBlack: #1E1E1E;
+@colorBlackLight: #999999;
+@colorDanger: #FF0000;
+@colorProfileAvatar: #EFEFEF;
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.flex-middle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+// Text
+.text_dark {
+  color: @colorBlack;
+}
+
+.text_light {
+  color: @colorBlackLight;
+}
+
+.text_info {
+  color: @colorBlueAccent;
+}
+
+.text_danger {
+  color: @colorDanger;
+}
+
+// Login and sign in forms
+.card {
+  width: 340px;
+  min-height: 460px;
+  box-sizing: border-box;
+  padding: 50px 30px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: white;
+  border-radius: @cardRadius;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.card__container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card__title {
+  font-size: 20px;
+  margin-bottom: 40px;
+}
+
+.card__link {
+  margin-top: 15px;
+  color: @colorBlueAccent;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 12px;
+  text-decoration: none;
+}
+
+.login-form {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex: 1;
+  gap: 30px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login-form__field {
+  width: 100%;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form__label {
+  font-size: 12px;
+  
+}
+
+.login-form__input {
+  padding: 10px 0;
+  font-size: 13px;
+  border-bottom: solid 2px @colorBlueAccent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.button {
+  width: 100%;
+  max-width: 280px;
+  padding: 10px 20px;
+  background-color: @colorBlueAccent;
+  color: white;
+  border: none;
+  border-radius: @buttonRadius;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.button:hover {
+  background-color: @colorBlueAccentHover;
+}
+
+// Error page
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.error__code {
+  color: @colorBlack;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 40px;
+  margin-bottom: 20px;
+}
+
+.error__title {
+  color: @colorBlack;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.error__link {
+  color: @colorBlueAccent;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 12px;
+  margin-top: 60px;
+  cursor: pointer;
+}
+
+//profile
+.profile {
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+
+  display: flex;
+}
+
+.profile__bar {
+  width: 70px;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: @colorGrey;
+  box-shadow: 1px 0px 1px 0px @colorGreyAccent;
+}
+
+.profile__content__avatar {
+  position: relative;
+
+  width: 130px;
+  height: 130px;
+
+  box-sizing: border-box;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: @colorProfileAvatar;
+
+  &:hover {
+    .profile__content__avatar_active {
+      opacity: 1;
+      transition: 250ms;
+    }
+  }
+}
+
+.profile__content__avatar_active {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  opacity: 0;
+
+  box-sizing: border-box;
+  padding: 10%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  color: @colorGreyAccent;
+
+  background: rgba(30, 30, 30, 0.5);
+
+  cursor: pointer;
+}
+
+.profile__content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile__content__username {
+  font-size: 20px;
+  margin: 20px;
+  font-weight: bold;
+}
+
+.profile__content__list {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}
+
+.profile__content__list__item {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 10px 0;
+
+  border-bottom: solid 1px @colorGreyAccent;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+//profile-edit
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
+.profile-form__input {
+  outline: none;
+  border: none;
+  text-align: right;
+
+  &:focus {
+    border-bottom: solid 1px @colorBlueAccent;
+  }
+}

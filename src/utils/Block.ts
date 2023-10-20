@@ -19,6 +19,7 @@ class Block<P extends Record<string, any> = any> {
     private _element: HTMLElement | null = null;
     private _meta: { tagName: string; props: P; };
 
+
     /** JSDoc
      * @param {string} tagName
      * @param {Object} props
@@ -109,6 +110,7 @@ class Block<P extends Record<string, any> = any> {
     }
 
     protected componentDidUpdate(oldProps: P, newProps: P) {
+        console.log(oldProps, newProps)
         return true;
     }
 
@@ -186,7 +188,7 @@ class Block<P extends Record<string, any> = any> {
                 self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
                 return true;
             },
-            deleteProperty(target: P, p: string | symbol): boolean {
+            deleteProperty(): boolean {
                 throw new Error("Нет доступа");
             }
         });

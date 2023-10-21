@@ -6,4 +6,4 @@ export const tmpl = `
         <div class="error__link">Назад к чатам</div>
     </div>
 </div>
-`
+`;

@@ -9,14 +9,19 @@ class Block<P extends Record<string, any> = any> {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
     FLOW_CDU: 'flow:component-did-update',
-    FLOW_RENDER: 'flow:render'
+    FLOW_RENDER: 'flow:render',
   } as const;
 
   public id = nanoid(6);
+
   protected props: P;
+
   public children: Record<string, Block>;
+
   private eventBus: () => EventBus;
+
   private _element: HTMLElement | null = null;
+
   private _meta: { tagName: string; props: P; };
 
   /** JSDoc
@@ -30,12 +35,12 @@ class Block<P extends Record<string, any> = any> {
 
     const {
       props,
-      children
+      children,
     } = this._getChildrenAndProps(propsWithChildren);
 
     this._meta = {
       tagName,
-      props: props as P
+      props: props as P,
     };
 
     this.children = children;
@@ -63,7 +68,7 @@ class Block<P extends Record<string, any> = any> {
 
     return {
       props: props as P,
-      children
+      children,
     };
   }
 
@@ -71,7 +76,7 @@ class Block<P extends Record<string, any> = any> {
     const { events = {} } = this.props as P & { events: Record<string, () => void> };
 
     Object.keys(events)
-      .forEach(eventName => {
+      .forEach((eventName) => {
         this._element?.addEventListener(eventName, events[eventName]);
       });
   }
@@ -88,7 +93,7 @@ class Block<P extends Record<string, any> = any> {
     this._element = this._createDocumentElement(tagName);
   }
 
-  //Для простоты использования сделал так, знаю, что не самый лучший вариант, но эффективный и быстрый
+  // Для простоты использования сделал так, знаю, что не самый лучший вариант, но эффективный и быстрый
   _addAttributes() {
     this._addClass();
 
@@ -129,7 +134,7 @@ class Block<P extends Record<string, any> = any> {
       .emit(Block.EVENTS.FLOW_CDM);
 
     Object.values(this.children)
-      .forEach(child => child.dispatchComponentDidMount());
+      .forEach((child) => child.dispatchComponentDidMount());
   }
 
   private _componentDidUpdate(oldProps: P, newProps: P) {
@@ -226,7 +231,7 @@ class Block<P extends Record<string, any> = any> {
       },
       deleteProperty(): boolean {
         throw new Error('Нет доступа');
-      }
+      },
     });
   }
 
@@ -241,7 +246,6 @@ class Block<P extends Record<string, any> = any> {
   hide() {
     this.getContent()!.style.display = 'none';
   }
-
 }
 
 export default Block;

@@ -1,24 +1,24 @@
-import {tmpl} from "./chat.tmpl";
-import Block from "../../utils/Block";
-import {InputMessage} from "../../components/input/message";
+import { tmpl } from './chat.tmpl';
+import Block from '../../utils/Block';
+import { InputMessage } from '../../components/input/message';
 
 export class Chat extends Block {
-    constructor() {
-        super('div', {});
-    }
+  constructor() {
+    super('div', {});
+  }
 
-    protected init() {
-        this.children.inputMessage = new InputMessage({
-                attributes: [
-                {name: 'placeholder', value: 'Сообщение'},
-                {name: 'name', value: 'message'},
-                {name: 'type', value: 'text'},
-            ],
-            class: "input",
-        },'input', 'input invalid')
-    }
+  protected init() {
+    this.children.inputMessage = new InputMessage({
+      attributes: [
+        { name: 'placeholder', value: 'Сообщение' },
+        { name: 'name', value: 'message' },
+        { name: 'type', value: 'text' },
+      ],
+      class: 'input',
+    }, 'input', 'input invalid');
+  }
 
-    protected render(): DocumentFragment {
-        return this.compile(tmpl, this.props)
-    }
+  protected render(): DocumentFragment {
+    return this.compile(tmpl, this.props);
+  }
 }

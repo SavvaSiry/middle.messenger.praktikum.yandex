@@ -4,17 +4,15 @@ import Block from '../../../utils/Block';
 
 interface formData {
   [key: string]: string;
-};
+}
 
 export class SubmitButton extends Button {
-
   constructor(props: ButtonProps, children: Record<string, Block<any>>) {
-
     if (!props.events || !props.events.click) {
       {
         props.events = {
           click: () => {
-            let formData: formData = {};
+            const formData: formData = {};
 
             Object.entries(children)
               .forEach((child) => {
@@ -24,12 +22,11 @@ export class SubmitButton extends Button {
               });
 
             console.log(formData);
-          }
+          },
         };
       }
     }
 
     super(props);
   }
-
 }

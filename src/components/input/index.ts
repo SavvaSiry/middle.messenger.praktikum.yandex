@@ -12,12 +12,11 @@ interface InputProps {
 }
 
 export class Input extends Block {
-
   private classValid: string;
+
   private classInvalid: string;
 
   constructor(props: InputProps, classValid: string, classInvalid: string) {
-
     if (!props.events || !props.events.blur) {
       props.events = {
         blur: () => {
@@ -26,7 +25,7 @@ export class Input extends Block {
           } else {
             this.props.class = classInvalid;
           }
-        }
+        },
       };
     }
 

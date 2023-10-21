@@ -9,7 +9,6 @@ import { Input } from '../../components/input';
 import { SubmitButton } from '../../components/button/submit';
 
 export class Signin extends Block {
-
   constructor() {
     super('div', {
       events: {
@@ -21,8 +20,8 @@ export class Signin extends Block {
                 child[1].validate();
               }
             });
-        }
-      }
+        },
+      },
     });
   }
 
@@ -31,149 +30,148 @@ export class Signin extends Block {
       attributes: [
         {
           name: 'placeholder',
-          value: 'Введите почту'
+          value: 'Введите почту',
         },
         {
           name: 'name',
-          value: 'email'
+          value: 'email',
         },
         {
           name: 'type',
-          value: 'text'
+          value: 'text',
         },
       ],
       class: 'login-form__input',
     }, 'login-form__input', 'login-form__input invalid'),
 
-      this.children.inputLogin = new InputLogin({
-        attributes: [
-          {
-            name: 'placeholder',
-            value: 'Введите логин'
-          },
-          {
-            name: 'name',
-            value: 'login'
-          },
-          {
-            name: 'type',
-            value: 'text'
-          },
-        ],
-        class: 'login-form__input',
-      }, 'login-form__input', 'login-form__input invalid'),
+    this.children.inputLogin = new InputLogin({
+      attributes: [
+        {
+          name: 'placeholder',
+          value: 'Введите логин',
+        },
+        {
+          name: 'name',
+          value: 'login',
+        },
+        {
+          name: 'type',
+          value: 'text',
+        },
+      ],
+      class: 'login-form__input',
+    }, 'login-form__input', 'login-form__input invalid'),
 
-      this.children.inputUsername = new InputName({
-        attributes: [
-          {
-            name: 'placeholder',
-            value: 'Введите имя'
-          },
-          {
-            name: 'name',
-            value: 'first_name'
-          },
-          {
-            name: 'type',
-            value: 'text'
-          },
-        ],
-        class: 'login-form__input',
-      }, 'login-form__input', 'login-form__input invalid'),
+    this.children.inputUsername = new InputName({
+      attributes: [
+        {
+          name: 'placeholder',
+          value: 'Введите имя',
+        },
+        {
+          name: 'name',
+          value: 'first_name',
+        },
+        {
+          name: 'type',
+          value: 'text',
+        },
+      ],
+      class: 'login-form__input',
+    }, 'login-form__input', 'login-form__input invalid'),
 
-      this.children.inputSecondName = new InputName({
-        attributes: [
-          {
-            name: 'placeholder',
-            value: 'Введите фамилию'
-          },
-          {
-            name: 'name',
-            value: 'second_name'
-          },
-          {
-            name: 'type',
-            value: 'text'
-          },
-        ],
-        class: 'login-form__input',
-      }, 'login-form__input', 'login-form__input invalid'),
+    this.children.inputSecondName = new InputName({
+      attributes: [
+        {
+          name: 'placeholder',
+          value: 'Введите фамилию',
+        },
+        {
+          name: 'name',
+          value: 'second_name',
+        },
+        {
+          name: 'type',
+          value: 'text',
+        },
+      ],
+      class: 'login-form__input',
+    }, 'login-form__input', 'login-form__input invalid'),
 
-      this.children.inputPhone = new InputPhone({
-        attributes: [
-          {
-            name: 'placeholder',
-            value: 'Введите номер телефона'
-          },
-          {
-            name: 'name',
-            value: 'phone'
-          },
-          {
-            name: 'type',
-            value: 'text'
-          },
-        ],
-        class: 'login-form__input',
-      }, 'login-form__input', 'login-form__input invalid'),
+    this.children.inputPhone = new InputPhone({
+      attributes: [
+        {
+          name: 'placeholder',
+          value: 'Введите номер телефона',
+        },
+        {
+          name: 'name',
+          value: 'phone',
+        },
+        {
+          name: 'type',
+          value: 'text',
+        },
+      ],
+      class: 'login-form__input',
+    }, 'login-form__input', 'login-form__input invalid'),
 
-      this.children.inputPassword = new InputPassword({
-        attributes: [
-          {
-            name: 'placeholder',
-            value: 'Введите пароль'
-          },
-          {
-            name: 'name',
-            value: 'password'
-          },
-          {
-            name: 'type',
-            value: 'password'
-          },
-        ],
-        class: 'login-form__input',
-      }, 'login-form__input', 'login-form__input invalid'),
+    this.children.inputPassword = new InputPassword({
+      attributes: [
+        {
+          name: 'placeholder',
+          value: 'Введите пароль',
+        },
+        {
+          name: 'name',
+          value: 'password',
+        },
+        {
+          name: 'type',
+          value: 'password',
+        },
+      ],
+      class: 'login-form__input',
+    }, 'login-form__input', 'login-form__input invalid'),
 
-      this.children.inputPasswordAgain = new Input({
-        attributes: [
-          {
-            name: 'placeholder',
-            value: 'Введите пароль'
-          },
-          {
-            name: 'name',
-            value: 'password'
-          },
-          {
-            name: 'type',
-            value: 'password'
-          },
-        ],
-        class: 'login-form__input',
-        // events: {
-        //     blur: ()=> {
-        //         if (this.children.inputPassword instanceof Input) {
-        //             if (this.children.inputPassword.value === this.children.inputPasswordAgain.value)
-        //                 this.children.inputPasswordAgain.props.class = "login-form__input"
-        //             else
-        //                 this.children.inputPasswordAgain.props.class = "login-form__input invalid"
-        //         }
-        //     }
-        // }
-      }, 'login-form__input', ''),
+    this.children.inputPasswordAgain = new Input({
+      attributes: [
+        {
+          name: 'placeholder',
+          value: 'Введите пароль',
+        },
+        {
+          name: 'name',
+          value: 'password',
+        },
+        {
+          name: 'type',
+          value: 'password',
+        },
+      ],
+      class: 'login-form__input',
+      // events: {
+      //     blur: ()=> {
+      //         if (this.children.inputPassword instanceof Input) {
+      //             if (this.children.inputPassword.value === this.children.inputPasswordAgain.value)
+      //                 this.children.inputPasswordAgain.props.class = "login-form__input"
+      //             else
+      //                 this.children.inputPasswordAgain.props.class = "login-form__input invalid"
+      //         }
+      //     }
+      // }
+    }, 'login-form__input', ''),
 
-      this.children.button = new SubmitButton({
-        attributes: [
-          {
-            name: 'type',
-            value: 'submit'
-          },
-        ],
-        label: 'Зарегестрироваться',
-        class: 'button',
-      }, this.children);
-
+    this.children.button = new SubmitButton({
+      attributes: [
+        {
+          name: 'type',
+          value: 'submit',
+        },
+      ],
+      label: 'Зарегестрироваться',
+      class: 'button',
+    }, this.children);
   }
 
   protected render(): DocumentFragment {

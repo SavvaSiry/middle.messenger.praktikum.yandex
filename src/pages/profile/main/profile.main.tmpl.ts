@@ -58,4 +58,4 @@ export const tmpl = `
         </ul>
     </div>
 </div>
-`
+`;

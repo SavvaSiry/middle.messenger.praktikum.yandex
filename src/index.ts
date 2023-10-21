@@ -35,4 +35,4 @@ document.addEventListener('DOMContentLoaded', () => {
     root.append(component.element!);
     component.dispatchComponentDidMount();
   }
-})
+});

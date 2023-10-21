@@ -23,18 +23,22 @@ export const tmpl = `
             <ul class="profile__content__list">
                 <li class="profile__content__list__item">
                     <label class="text_dark" for="email">Старый пароль</label>
-                    <input class="profile-form__input" name="oldPassword" type="password" placeholder="*********">
+                    {{{oldPassword}}}
+<!--                    <input class="profile-form__input" name="oldPassword" type="password" placeholder="*********">-->
                 </li>
                 <li class="profile__content__list__item">
                     <label class="text_dark" for="login">Новый пароль</label>
-                    <input class="profile-form__input" name="newPassword" type="password" placeholder="*********">
+                    {{{newPassword}}}
+<!--                    <input class="profile-form__input" name="newPassword" type="password" placeholder="*********">-->
                 </li>
                 <li class="profile__content__list__item">
                     <label class="text_dark" for="first_name">Повторите новый пароль</label>
-                    <input class="profile-form__input" name="newPassword" type="password" placeholder="*********">
+                    {{{newPasswordAgain}}}
+<!--                    <input class="profile-form__input" name="newPassword" type="password" placeholder="*********">-->
                 </li>
             </ul>
-            <button class="button" type="submit">Сохранить</button>
+            {{{button}}}
+<!--            <button class="button" type="submit">Сохранить</button>-->
         </form>
     </div>
 </div>

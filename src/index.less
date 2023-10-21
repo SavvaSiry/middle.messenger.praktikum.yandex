@@ -17,7 +17,7 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
 }
 
 .flex-middle-container {
@@ -53,15 +53,12 @@ a {
   width: 340px;
   min-height: 460px;
   box-sizing: border-box;
-  padding: 50px 30px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-
   background-color: white;
   border-radius: @radiusCard;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgb(0 0 0 / 10%);
   padding: 20px;
 }
 
@@ -90,7 +87,6 @@ a {
 .login-form {
   width: 100%;
   height: 100%;
-
   display: flex;
   flex: 1;
   gap: 30px;
@@ -183,35 +179,28 @@ a {
   width: 100%;
   height: 100vh;
   box-sizing: border-box;
-
   display: flex;
 }
 
 .profile__bar {
   width: 70px;
   height: 100%;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   background: @colorGrey;
-  box-shadow: 1px 0px 1px 0px @colorGreyAccent;
+  box-shadow: 1px 0 1px 0 @colorGreyAccent;
 }
 
 .profile__content__avatar {
   position: relative;
-
   width: 130px;
   height: 130px;
-
   box-sizing: border-box;
   overflow: hidden;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   border-radius: 50%;
   background: @colorProfileAvatar;
 
@@ -227,21 +216,15 @@ a {
   position: absolute;
   width: 100%;
   height: 100%;
-
   opacity: 0;
-
   box-sizing: border-box;
   padding: 10%;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   text-align: center;
   color: @colorGreyAccent;
-
-  background: rgba(30, 30, 30, 0.5);
-
+  background: rgb(30 30 30 / 50%);
   cursor: pointer;
 }
 
@@ -267,13 +250,10 @@ a {
 
 .profile__content__list__item {
   width: 100%;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   padding: 10px 0;
-
   border-bottom: solid 1px @colorGreyAccent;
 
   &:last-child {
@@ -293,9 +273,14 @@ a {
   outline: none;
   border: none;
   text-align: right;
+  padding-bottom: 5px;
 
   &:focus {
     border-bottom: solid 1px @colorBlueAccent;
+  }
+
+  &.invalid {
+    border-bottom: solid 1px @colorDanger;
   }
 }
 
@@ -303,29 +288,24 @@ a {
 .chat-panel {
   width: 25%;
   height: 100%;
-
   box-sizing: border-box;
   padding: 0 10px;
-
   background: @colorGrey;
   border-right: 1px solid @colorGreyAccent;
 }
 
 .chat-panel__header {
   height: auto;
-
   display: flex;
   flex-direction: column;
 
   .chat-panel__header__link {
     width: 100%;
     height: 54px;
-
     display: flex;
     align-items: center;
     justify-content: flex-end;
     gap: 8px;
-
     text-align: right;
     font-size: 13px;
   }
@@ -333,14 +313,11 @@ a {
   .chat-panel__header__input {
     width: 100%;
     height: 32px;
-
     margin-bottom: 15px;
-
     background: @colorGreyAccent;
     border-radius: @radiusSearch;
     outline: none;
     border: none;
-
     text-align: center;
   }
 }
@@ -352,11 +329,9 @@ a {
 
 .chat-panel__list__item {
   height: 47px;
-
   display: flex;
   justify-content: space-between;
   gap: 10px;
-
   padding: 12px 0;
   border-top: solid 1px @colorGreyAccent;
 
@@ -364,7 +339,6 @@ a {
     width: 47px;
     height: 47px;
     border-radius: 100%;
-
     background: @colorProfileAvatar;
   }
 
@@ -396,13 +370,10 @@ a {
       display: flex;
       align-items: center;
       justify-content: center;
-
       width: 20px;
       height: 20px;
-
       background: @colorBlueAccent;
       border-radius: 100%;
-
       font-size: 12px;
       color: white;
     }
@@ -412,10 +383,8 @@ a {
 .chat-feed {
   width: 75%;
   height: 100%;
-
   display: flex;
   flex-direction: column;
-
   box-sizing: border-box;
   padding: 0 20px;
 }
@@ -423,7 +392,6 @@ a {
 .chat-feed__top-bar {
   height: 54px;
   border-bottom: 1px solid @colorGreyAccent;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -449,11 +417,9 @@ a {
     width: 25px;
     height: 25px;
     border-radius: 100%;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     background: @colorGreyAccent;
 
     .circle {
@@ -464,16 +430,12 @@ a {
 
 .chat-feed__messages {
   flex: 1;
-
-
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   gap: 10px;
-
   box-sizing: border-box;
   padding: 30px 0;
-
   overflow: auto;
 
   .data {
@@ -497,7 +459,7 @@ a {
 
   .message_left {
     background: @colorChatMessageLeft;
-    border-radius: 0 10px 10px 10px;
+    border-radius: 0 10px 10px;
     align-self: flex-start;
 
     .time {
@@ -507,7 +469,7 @@ a {
 
   .message_right {
     background: @colorChatMessageRight;
-    border-radius: 10px 10px 0 10px;
+    border-radius: 10px 10px 0;
     align-self: flex-end;
 
     .time {
@@ -520,7 +482,6 @@ a {
 .chat-feed__bottom-bar {
   height: 54px;
   border-top: 1px solid @colorGreyAccent;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -529,10 +490,8 @@ a {
   input {
     flex: 1;
     height: 32px;
-
     box-sizing: border-box;
     padding: 10px 20px;
-
     outline: none;
     border: none;
     border-radius: 30px;

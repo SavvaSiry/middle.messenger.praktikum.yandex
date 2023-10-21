@@ -19,6 +19,7 @@ export class Signin extends Block {
             attributes: [
                 {name: 'placeholder', value: 'Введите почту'},
                 {name: 'name', value: 'email'},
+                {name: 'type', value: 'text'},
             ],
             class: "login-form__input",
         }, "login-form__input", "login-form__input invalid"),
@@ -27,6 +28,7 @@ export class Signin extends Block {
             attributes: [
                 {name: 'placeholder', value: 'Введите логин'},
                 {name: 'name', value: 'login'},
+                {name: 'type', value: 'text'},
             ],
             class: "login-form__input",
         }, "login-form__input", "login-form__input invalid"),
@@ -35,6 +37,7 @@ export class Signin extends Block {
             attributes: [
                 {name: 'placeholder', value: 'Введите имя'},
                 {name: 'name', value: 'first_name'},
+                {name: 'type', value: 'text'},
             ],
             class: "login-form__input",
         }, "login-form__input", "login-form__input invalid"),
@@ -43,6 +46,7 @@ export class Signin extends Block {
                 attributes: [
                     {name: 'placeholder', value: 'Введите фамилию'},
                     {name: 'name', value: 'second_name'},
+                    {name: 'type', value: 'text'},
                 ],
                 class: "login-form__input",
             }, "login-form__input", "login-form__input invalid"),
@@ -51,6 +55,7 @@ export class Signin extends Block {
                 attributes: [
                     {name: 'placeholder', value: 'Введите номер телефона'},
                     {name: 'name', value: 'phone'},
+                    {name: 'type', value: 'text'},
                 ],
                 class: "login-form__input",
             }, "login-form__input", "login-form__input invalid"),

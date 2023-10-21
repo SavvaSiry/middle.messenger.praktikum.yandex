@@ -23,30 +23,37 @@ export const tmpl = `
             <ul class="profile__content__list">
                 <li class="profile__content__list__item">
                     <label class="text_dark" for="email">Почта</label>
-                    <input class="profile-form__input text_light" name="email" type="text" placeholder="example@mail.ru">
+                    {{{inputEmail}}}
+<!--                    <input class="profile-form__input text_light" name="email" type="text" placeholder="example@mail.ru">-->
                 </li>
                 <li class="profile__content__list__item">
                     <label class="text_dark" for="login">Логин</label>
-                    <input class="profile-form__input text_light" name="login" type="text" placeholder="example">
+                    {{{inputLogin}}}
+<!--                    <input class="profile-form__input text_light" name="login" type="text" placeholder="example">-->
                 </li>
                 <li class="profile__content__list__item">
                     <label class="text_dark" for="first_name">Имя</label>
-                    <input class="profile-form__input text_light" name="first_name" type="text" placeholder="Иван">
+                    {{{inputUsername}}}
+<!--                    <input class="profile-form__input text_light" name="first_name" type="text" placeholder="Иван">-->
                 </li>
                 <li class="profile__content__list__item">
                     <label class="text_dark" for="second_name">Фамилия</label>
-                    <input class="profile-form__input text_light" name="second_name" type="text" placeholder="Иванов">
+                    {{{inputSecondName}}}
+<!--                    <input class="profile-form__input text_light" name="second_name" type="text" placeholder="Иванов">-->
                 </li>
                 <li class="profile__content__list__item">
                     <label class="text_dark" for="display_name">Имя в чате</label>
-                    <input class="profile-form__input text_light" name="display_name" type="text" placeholder="Иван">
+                    {{{displayName}}}
+<!--                    <input class="profile-form__input text_light" name="display_name" type="text" placeholder="Иван">-->
                 </li>
                 <li class="profile__content__list__item">
                     <label class="text_dark" for="phone">Телефон</label>
-                    <input class="profile-form__input text_light" name="phone" type="text" placeholder="123-321-123">
+                    {{{inputPhone}}}
+<!--                    <input class="profile-form__input text_light" name="phone" type="text" placeholder="123-321-123">-->
                 </li>
             </ul>
-            <button class="button" type="submit">Сохранить</button>
+            {{{button}}}
+<!--            <button class="button" type="submit">Сохранить</button>-->
         </form>
     </div>
 </div>

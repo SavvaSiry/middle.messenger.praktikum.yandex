@@ -10,7 +10,7 @@ import {Example} from "./pages/example";
 import Block from "./utils/Block";
 
 const ROUTES: Record<string, Block> = {
-    '/': new Login(),
+    '/': new Chat(),
     '/login': new Login(),
     '/signin': new Signin(),
     '/profile': new Profile(),

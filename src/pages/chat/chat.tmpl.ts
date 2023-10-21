@@ -68,7 +68,9 @@ export const tmpl = `
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M9.70092 16.0144C7.95751 17.7578 7.95123 20.5782 9.68689 22.3138C11.4226 24.0495 14.2429 24.0432 15.9863 22.2998L15.0435 21.357C13.8231 22.5774 11.8489 22.5818 10.6339 21.3668C9.41894 20.1518 9.42334 18.1776 10.6437 16.9572L9.70092 16.0144Z" fill="#3369F3"/>
             </svg>
             
-            <input class="input" type="text" name="message" placeholder="Cообщение">
+            {{{inputMessage}}}
+            
+<!--            <input class="input" type="text" name="message" placeholder="Cообщение">-->
             
             <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="14" cy="14" r="14" fill="#3369F3"/>

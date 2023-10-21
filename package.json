@@ -11,7 +11,7 @@
     "build": "vite build",
     "start": "node server.js",
     "preview": "vite preview",
-    "lint": "tsc & stylelint **/*.less & eslint **/*.ts"
+    "lint": "tsc & stylelint **/*.less & eslint **/*.ts & eslint server.js"
   },
   "devDependencies": {
     "@types/node": "^20.7.1",

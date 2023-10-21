@@ -3,10 +3,23 @@ import Block from "../../utils/Block";
 import {InputLogin} from "../../components/input/login";
 import {InputPassword} from "../../components/input/password";
 import { SubmitButton } from '../../components/button/submit';
+import { Input } from '../../components/input';
 
 export class Login extends Block {
     constructor() {
-        super('div', {});
+        super('div', {
+            events: {
+                submit: (event: Event) => {
+                    event.preventDefault();
+                    Object.entries(this.children)
+                      .forEach((child) => {
+                          if (child[1] instanceof Input) {
+                              child[1].validate();
+                          }
+                      });
+                }
+            }
+        });
     }
 
     protected init() {

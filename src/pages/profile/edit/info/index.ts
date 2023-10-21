@@ -5,10 +5,23 @@ import { InputLogin } from '../../../../components/input/login';
 import { InputPhone } from '../../../../components/input/phone';
 import { InputName } from '../../../../components/input/name';
 import { SubmitButton } from '../../../../components/button/submit';
+import { Input } from '../../../../components/input';
 
 export class ProfileEditInfo extends Block {
     constructor() {
-        super('div', {});
+        super('div', {
+            events: {
+                submit: (event: Event) => {
+                    event.preventDefault();
+                    Object.entries(this.children)
+                      .forEach((child) => {
+                          if (child[1] instanceof Input) {
+                              child[1].validate();
+                          }
+                      });
+                }
+            }
+        });
     }
 
     protected init() {

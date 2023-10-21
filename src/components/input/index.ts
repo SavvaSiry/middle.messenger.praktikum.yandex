@@ -8,11 +8,13 @@ interface InputProps {
   class: string,
   events?: {
     blur: () => void,
-    submit: () => void,
   }
 }
 
 export class Input extends Block {
+
+  private classValid: string;
+  private classInvalid: string;
 
   constructor(props: InputProps, classValid: string, classInvalid: string) {
 
@@ -24,19 +26,22 @@ export class Input extends Block {
           } else {
             this.props.class = classInvalid;
           }
-        },
-        submit: () => {
-          console.log("Submit")
-          if (this.isValid) {
-            this.props.class = classValid;
-          } else {
-            this.props.class = classInvalid;
-          }
         }
       };
     }
 
     super('input', props);
+
+    this.classValid = classValid;
+    this.classInvalid = classInvalid;
+  }
+
+  validate() {
+    if (this.isValid) {
+      this.props.class = this.classValid;
+    } else {
+      this.props.class = this.classInvalid;
+    }
   }
 
   get isValid() {

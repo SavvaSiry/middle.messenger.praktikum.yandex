@@ -49,4 +49,4 @@ export const tmpl = `
         </form>
     </div>
 </main>
-`
+`;

@@ -8,7 +8,7 @@ interface formData {
 
 export class SubmitButton extends Button {
 
-  constructor(props: ButtonProps, children: Block) {
+  constructor(props: ButtonProps, children: Record<string, Block<any>>) {
 
     if (!props.events || !props.events.click) {
       {

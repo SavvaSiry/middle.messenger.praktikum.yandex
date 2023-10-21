@@ -1,7 +1,9 @@
 import Block from '../../utils/Block';
 
-interface ButtonProps {
-    label: string;
+export interface ButtonProps {
+    label: string,
+    class: string,
+    attributes: [],
     events: {
         click: () => void;
     };
@@ -10,6 +12,10 @@ interface ButtonProps {
 export class Button extends Block {
     constructor(props: ButtonProps) {
         super('button', props);
+    }
+
+    protected init() {
+        this.element?.setAttribute("class", this.props.class)
     }
 
     render() {

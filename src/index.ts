@@ -1,6 +1,6 @@
 // import {Chat} from "./pages/chat";
 import {Login} from "./pages/login";
-// import {Signin} from "./pages/signin";
+import {Signin} from "./pages/signin";
 // import {Profile} from "./pages/profile/main";
 import {Error404} from "./pages/errors/error404";
 // import {Error500} from "./pages/errors/error500";
@@ -12,7 +12,7 @@ import Block from "./utils/Block";
 const ROUTES: Record<string, Block> = {
     // '/': Login(),
     '/login': new Login(),
-    // '/signin': Signin(),
+    '/signin': new Signin(),
     // '/profile': Profile(),
     // '/profile-edit-info': ProfileEditInfo(),
     // '/profile-edit-pass': ProfileEditPass(),

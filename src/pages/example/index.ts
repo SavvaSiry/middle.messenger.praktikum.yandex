@@ -30,12 +30,11 @@ export class Example extends Block {
             class: "login-form__input",
             events: {
                 blur: () => {
-                    if (this.children.input instanceof Input)
-                        console.log(this.children.input.isValid)
+                    if (this.children.input1 instanceof Input)
+                        console.log(this.children.input1.isValid)
                 },
             }
         });
-        this.children.input2 = new Input({})
     }
 
     render() {
@@ -43,8 +42,6 @@ export class Example extends Block {
       <h1>{{title}}</h1>
       {{{button}}}
       {{{input1}}}
-      
-      {{{input2}}}
     `, this.props);
     };
 }

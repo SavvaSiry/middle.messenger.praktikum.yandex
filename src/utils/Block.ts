@@ -81,6 +81,20 @@ class Block<P extends Record<string, any> = any> {
         this._element = this._createDocumentElement(tagName);
     }
 
+    //Для простоты использования сделал так, знаю, что не самый лучший вариант, но за-то простой и эффективный
+    _addAttributes() {
+        this._addClass();
+
+        if (this.props.attributes) {
+            this.props.attributes.forEach((attr) => this._element?.setAttribute(attr.name, attr.value));
+        }
+    }
+
+    _addClass() {
+        if (this.props.class)
+            this._element?.setAttribute("class", this.props.class);
+    }
+
     private _init() {
         this._createResources();
 
@@ -110,7 +124,6 @@ class Block<P extends Record<string, any> = any> {
     }
 
     protected componentDidUpdate(oldProps: P, newProps: P) {
-        console.log(oldProps, newProps)
         return true;
     }
 
@@ -130,6 +143,8 @@ class Block<P extends Record<string, any> = any> {
         const fragment = this.render();
 
         this._element!.innerHTML = '';
+
+        this._addAttributes();
 
         this._element!.append(fragment);
 
@@ -205,6 +220,7 @@ class Block<P extends Record<string, any> = any> {
     hide() {
         this.getContent()!.style.display = "none";
     }
+
 }
 
 export default Block;

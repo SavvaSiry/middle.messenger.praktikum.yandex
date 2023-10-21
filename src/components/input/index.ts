@@ -1,16 +1,34 @@
 import Block from "../../utils/Block";
 
 interface InputProps {
-    name: string,
+    attributes: [
+        {
+            name: string,
+            value: string
+        }
+    ],
     class: string,
-    type: string,
     events: {
         blur: () => void;
     }
 }
 
 export class Input extends Block {
-    constructor(props: InputProps) {
+
+    constructor(props: InputProps, classValid: string, classInvalid: string) {
+
+        if (!props.events || !props.events.blur) {
+            props.events = {
+                blur: () => {
+                    if (this.isValid) {
+                        this.props.class = classValid
+                    } else {
+                        this.props.class = classInvalid
+                    }
+                }
+            }
+        }
+
         super('input', props);
     }
 
@@ -24,12 +42,6 @@ export class Input extends Block {
 
     get name() {
         return (this.element! as HTMLInputElement).name;
-    }
-
-    protected componentDidMount() {
-        this.element?.setAttribute("class", this.props.class)
-        this.element?.setAttribute("name", this.props.name)
-        this.element?.setAttribute("type", this.props.type)
     }
 
     render() {

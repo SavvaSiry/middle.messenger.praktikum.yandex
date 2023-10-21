@@ -159,7 +159,7 @@ class Block<P extends Record<string, any> = any> {
   private _render() {
     const fragment = this.render();
 
-    this._element!.innerHTML = '';
+    this._element!.textContent = '';
 
     this._addAttributes();
 

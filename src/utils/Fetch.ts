@@ -29,7 +29,7 @@ export class HTTPTransport {
       const xhr = new XMLHttpRequest();
       xhr.open(method, url);
 
-      xhr.onload = function () {
+      xhr.onload = () => {
         resolve(xhr);
       };
 

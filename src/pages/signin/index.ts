@@ -42,7 +42,7 @@ export class Signin extends Block {
         },
       ],
       class: 'login-form__input',
-    }, 'login-form__input', 'login-form__input invalid'),
+    }, 'login-form__input', 'login-form__input invalid');
 
     this.children.inputLogin = new InputLogin({
       attributes: [
@@ -60,7 +60,7 @@ export class Signin extends Block {
         },
       ],
       class: 'login-form__input',
-    }, 'login-form__input', 'login-form__input invalid'),
+    }, 'login-form__input', 'login-form__input invalid');
 
     this.children.inputUsername = new InputName({
       attributes: [
@@ -78,7 +78,7 @@ export class Signin extends Block {
         },
       ],
       class: 'login-form__input',
-    }, 'login-form__input', 'login-form__input invalid'),
+    }, 'login-form__input', 'login-form__input invalid');
 
     this.children.inputSecondName = new InputName({
       attributes: [
@@ -96,7 +96,7 @@ export class Signin extends Block {
         },
       ],
       class: 'login-form__input',
-    }, 'login-form__input', 'login-form__input invalid'),
+    }, 'login-form__input', 'login-form__input invalid');
 
     this.children.inputPhone = new InputPhone({
       attributes: [
@@ -114,7 +114,7 @@ export class Signin extends Block {
         },
       ],
       class: 'login-form__input',
-    }, 'login-form__input', 'login-form__input invalid'),
+    }, 'login-form__input', 'login-form__input invalid');
 
     this.children.inputPassword = new InputPassword({
       attributes: [
@@ -132,7 +132,7 @@ export class Signin extends Block {
         },
       ],
       class: 'login-form__input',
-    }, 'login-form__input', 'login-form__input invalid'),
+    }, 'login-form__input', 'login-form__input invalid');
 
     this.children.inputPasswordAgain = new Input({
       attributes: [
@@ -153,14 +153,15 @@ export class Signin extends Block {
       // events: {
       //     blur: ()=> {
       //         if (this.children.inputPassword instanceof Input) {
-      //             if (this.children.inputPassword.value === this.children.inputPasswordAgain.value)
+      //             if (this.children.inputPassword.value ===
+      //             this.children.inputPasswordAgain.value)
       //                 this.children.inputPasswordAgain.props.class = "login-form__input"
       //             else
       //                 this.children.inputPasswordAgain.props.class = "login-form__input invalid"
       //         }
       //     }
       // }
-    }, 'login-form__input', ''),
+    }, 'login-form__input', 'login-form__input');
 
     this.children.button = new SubmitButton({
       attributes: [

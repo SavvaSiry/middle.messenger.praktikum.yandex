@@ -93,14 +93,16 @@ class Block<P extends Record<string, any> = any> {
     this._element = this._createDocumentElement(tagName);
   }
 
-  // Для простоты использования сделал так, знаю, что не самый лучший вариант, но эффективный и быстрый
+  // Для простоты использования сделал так, знаю,
+  // что не самый лучший вариант, но эффективный и быстрый
   _addAttributes() {
     this._addClass();
 
     type attributeType = { name: string, value: string }
 
     if (this.props.attributes) {
-      this.props.attributes.forEach((attr: attributeType) => this._element?.setAttribute(attr.name, attr.value));
+      this.props.attributes
+        .forEach((attr: attributeType) => this._element?.setAttribute(attr.name, attr.value));
     }
   }
 
@@ -188,7 +190,7 @@ class Block<P extends Record<string, any> = any> {
     temp.innerHTML = html;
 
     Object.entries(this.children)
-      .forEach(([_, component]) => {
+      .forEach(([, component]) => {
         const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
 
         if (!stub) {

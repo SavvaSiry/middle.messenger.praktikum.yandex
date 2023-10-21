@@ -32,7 +32,7 @@ export class ProfileEditInfo extends Block {
         { name: 'type', value: 'text' },
       ],
       class: 'profile-form__input',
-    }, 'profile-form__input', 'profile-form__input invalid'),
+    }, 'profile-form__input', 'profile-form__input invalid');
 
     this.children.inputLogin = new InputLogin({
       attributes: [
@@ -41,7 +41,7 @@ export class ProfileEditInfo extends Block {
         { name: 'type', value: 'text' },
       ],
       class: 'profile-form__input',
-    }, 'profile-form__input', 'profile-form__input invalid'),
+    }, 'profile-form__input', 'profile-form__input invalid');
 
     this.children.inputUsername = new InputName({
       attributes: [
@@ -50,7 +50,7 @@ export class ProfileEditInfo extends Block {
         { name: 'type', value: 'text' },
       ],
       class: 'profile-form__input',
-    }, 'profile-form__input', 'profile-form__input invalid'),
+    }, 'profile-form__input', 'profile-form__input invalid');
 
     this.children.inputSecondName = new InputName({
       attributes: [
@@ -59,7 +59,7 @@ export class ProfileEditInfo extends Block {
         { name: 'type', value: 'text' },
       ],
       class: 'profile-form__input',
-    }, 'profile-form__input', 'profile-form__input invalid'),
+    }, 'profile-form__input', 'profile-form__input invalid');
 
     this.children.displayName = new InputName({
       attributes: [
@@ -68,7 +68,7 @@ export class ProfileEditInfo extends Block {
         { name: 'type', value: 'text' },
       ],
       class: 'profile-form__input',
-    }, 'profile-form__input', 'profile-form__input invalid'),
+    }, 'profile-form__input', 'profile-form__input invalid');
 
     this.children.inputPhone = new InputPhone({
       attributes: [
@@ -77,7 +77,7 @@ export class ProfileEditInfo extends Block {
         { name: 'type', value: 'text' },
       ],
       class: 'profile-form__input',
-    }, 'profile-form__input', 'profile-form__input invalid'),
+    }, 'profile-form__input', 'profile-form__input invalid');
 
     this.children.button = new SubmitButton({
       attributes: [

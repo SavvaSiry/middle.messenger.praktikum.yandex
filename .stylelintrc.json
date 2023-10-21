@@ -3,6 +3,7 @@
     "stylelint-config-standard-less"
   ],
   "rules": {
+    "selector-class-pattern": "",
     "color-no-hex": true,
     "function-disallowed-list": [
       "rgb",

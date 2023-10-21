@@ -3,12 +3,38 @@ env:
   es2021: true
 extends:
   - eslint:recommended
-  - airbnb
   - plugin:@typescript-eslint/recommended
+  - airbnb
 parser: '@typescript-eslint/parser'
 parserOptions:
   ecmaVersion: latest
   sourceType: module
 plugins:
   - '@typescript-eslint'
-rules: {}
+settings:
+  import/resolver:
+    # You will also need to install and configure the TypeScript resolver
+    # See also https://github.com/import-js/eslint-import-resolver-typescript#configuration
+    typescript: true
+rules: {
+  "no-underscore-dangle": "off",
+  "import/extensions": "off",
+  "import/prefer-default-export": "off",
+  "no-unused-vars": "off",
+  "class-methods-use-this": "off",
+  "no-use-before-define": "off",
+  "default-param-last": "off",
+  "@typescript-eslint/no-this-alias": "off",
+  "no-param-reassign": "off",
+  "no-shadow": "off",
+  "import/no-extraneous-dependencies": "off",
+
+#  "import/no-unresolved": "off"
+#  "import/no-unresolved": [
+#    2,
+#    { caseSensitiveStrict: true }
+#  ],
+  "no-console": "off",
+  "@typescript-eslint/no-explicit-any": "off",
+
+}

@@ -12,6 +12,8 @@
 @colorDanger: #FF0000;
 @colorProfileAvatar: #EFEFEF;
 
+@colorShadow: rgba(30, 30, 30, 50%);
+
 @colorChatMessageLeft: #F8F8F8;;
 @colorChatMessageRight: #E4EDFD;
 
@@ -58,7 +60,7 @@ a {
   align-items: center;
   background-color: white;
   border-radius: @radiusCard;
-  box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+  box-shadow: 0 0 10px @colorShadow;
   padding: 20px;
 }
 
@@ -192,6 +194,22 @@ a {
   box-shadow: 1px 0 1px 0 @colorGreyAccent;
 }
 
+.profile__content__avatar_active {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  box-sizing: border-box;
+  padding: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: @colorGreyAccent;
+  background: @colorShadow;
+  cursor: pointer;
+}
+
 .profile__content__avatar {
   position: relative;
   width: 130px;
@@ -210,22 +228,6 @@ a {
       transition: 250ms;
     }
   }
-}
-
-.profile__content__avatar_active {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  box-sizing: border-box;
-  padding: 10%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: @colorGreyAccent;
-  background: rgb(30 30 30 / 50%);
-  cursor: pointer;
 }
 
 .profile__content {

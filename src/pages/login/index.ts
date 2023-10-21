@@ -30,13 +30,15 @@ export class Login extends Block {
       label: 'Войти',
       class: 'button',
     }, this.children);
+
     this.children.inputLogin = new InputLogin({
       attributes: [
         { name: 'placeholder', value: 'Введите логин' },
         { name: 'name', value: 'username' },
       ],
       class: 'login-form__input',
-    }, 'login-form__input', 'login-form__input invalid'),
+    }, 'login-form__input', 'login-form__input invalid');
+
     this.children.inputPassword = new InputPassword({
       attributes: [
         { name: 'placeholder', value: 'Введите пароль' },

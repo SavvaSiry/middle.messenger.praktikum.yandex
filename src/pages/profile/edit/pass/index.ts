@@ -29,7 +29,7 @@ export class ProfileEditPass extends Block {
         { name: 'type', value: 'password' },
       ],
       class: 'profile-form__input',
-    }, 'profile-form__input', 'profile-form__input invalid'),
+    }, 'profile-form__input', 'profile-form__input invalid');
 
     this.children.newPassword = new InputPassword({
       attributes: [
@@ -38,7 +38,7 @@ export class ProfileEditPass extends Block {
         { name: 'type', value: 'password' },
       ],
       class: 'profile-form__input',
-    }, 'profile-form__input', 'profile-form__input invalid'),
+    }, 'profile-form__input', 'profile-form__input invalid');
 
     this.children.newPasswordAgain = new Input({
       attributes: [
@@ -57,7 +57,7 @@ export class ProfileEditPass extends Block {
       //         }
       //     }
       // }
-    }, 'profile-form__input', 'profile-form__input invalid'),
+    }, 'profile-form__input', 'profile-form__input invalid');
 
     this.children.button = new SubmitButton({
       attributes: [

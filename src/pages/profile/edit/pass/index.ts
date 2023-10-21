@@ -1,15 +1,13 @@
-import {tmpl} from "./profile.edit.pass.tmpl";
-import Block from "../../../../utils/Block";
-import {InputPassword} from "../../../../components/input/password";
-import {Input} from "../../../../components/input";
-import {Button} from "../../../../components/button";
-
+import { tmpl } from './profile.edit.pass.tmpl';
+import Block from '../../../../utils/Block';
+import { InputPassword } from '../../../../components/input/password';
+import { Input } from '../../../../components/input';
+import { SubmitButton } from '../../../../components/button/submit';
 
 export class ProfileEditPass extends Block {
     constructor() {
         super('div', {});
     }
-
 
     protected init() {
         this.children.oldPassword = new InputPassword({
@@ -37,36 +35,25 @@ export class ProfileEditPass extends Block {
                 {name: 'type', value: 'password'},
             ],
             class: "profile-form__input",
-            events: {
-                blur: () => {
-                    if (this.children.inputPassword instanceof Input) {
-                        if (this.children.inputPassword.value === this.children.inputPasswordAgain.value)
-                            this.children.inputPasswordAgain.props.class = "profile-form__input"
-                        else
-                            this.children.inputPasswordAgain.props.class = "profile-form__input invalid"
-                    }
-                }
-            }
-        }),
+            // events: {
+            //     blur: () => {
+            //         if (this.children.inputPassword instanceof Input) {
+            //             if (this.children.newPassword.value === this.children.newPasswordAgain.value)
+            //                 this.children.newPassword.props.class = "profile-form__input"
+            //             else
+            //                 this.children.newPassword.props.class = "profile-form__input invalid"
+            //         }
+            //     }
+            // }
+        }, 'profile-form__input', 'profile-form__input invalid'),
 
-        this.children.button = new Button({
+        this.children.button = new SubmitButton({
             attributes: [
                 {name: 'type', value: 'submit'},
             ],
             label: 'Сохранить',
             class: 'button',
-            events: {
-                click: () => {
-                    let formData = {}
-                    Object.entries(this.children).forEach((child) => {
-                        if (child[1] instanceof Input) {
-                            formData[child[1].name] = child[1].value
-                        }
-                    })
-                    console.log(formData)
-                }
-            },
-        });
+        }, this.children);
     }
 
     protected render(): DocumentFragment {

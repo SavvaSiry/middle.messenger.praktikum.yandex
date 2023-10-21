@@ -1,12 +1,12 @@
-import {tmpl} from "./signin.tmpl";
-import Block from "../../utils/Block";
-import {InputLogin} from "../../components/input/login";
-import {InputName} from "../../components/input/name";
-import {InputEmail} from "../../components/input/email";
-import {InputPhone} from "../../components/input/phone";
-import {InputPassword} from "../../components/input/password";
-import {Input} from "../../components/input";
-import {Button} from "../../components/button";
+import { tmpl } from './signin.tmpl';
+import Block from '../../utils/Block';
+import { InputLogin } from '../../components/input/login';
+import { InputName } from '../../components/input/name';
+import { InputEmail } from '../../components/input/email';
+import { InputPhone } from '../../components/input/phone';
+import { InputPassword } from '../../components/input/password';
+import { Input } from '../../components/input';
+import { SubmitButton } from '../../components/button/submit';
 
 export class Signin extends Block {
 
@@ -76,36 +76,25 @@ export class Signin extends Block {
                     {name: 'type', value: 'password'},
                 ],
                 class: "login-form__input",
-                events: {
-                    blur: ()=> {
-                        if (this.children.inputPassword instanceof Input) {
-                            if (this.children.inputPassword.value === this.children.inputPasswordAgain.value)
-                                this.children.inputPasswordAgain.props.class = "login-form__input"
-                            else
-                                this.children.inputPasswordAgain.props.class = "login-form__input invalid"
-                        }
-                    }
-                }
-            }),
+                // events: {
+                //     blur: ()=> {
+                //         if (this.children.inputPassword instanceof Input) {
+                //             if (this.children.inputPassword.value === this.children.inputPasswordAgain.value)
+                //                 this.children.inputPasswordAgain.props.class = "login-form__input"
+                //             else
+                //                 this.children.inputPasswordAgain.props.class = "login-form__input invalid"
+                //         }
+                //     }
+                // }
+            }, 'login-form__input', ''),
 
-            this.children.button = new Button({
+            this.children.button = new SubmitButton({
                 attributes: [
                     {name: 'type', value: 'submit'},
                 ],
                 label: 'Зарегестрироваться',
                 class: 'button',
-                events: {
-                    click: () => {
-                        let formData = {}
-                        Object.entries(this.children).forEach((child) => {
-                            if (child[1] instanceof Input) {
-                                formData[child[1].name] = child[1].value
-                            }
-                        })
-                        console.log(formData)
-                    }
-                },
-            });
+            },this.children);
 
     }
 

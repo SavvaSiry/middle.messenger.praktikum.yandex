@@ -1,12 +1,10 @@
-import {tmpl} from "./profile.edit.info.tmpl";
-import Block from "../../../../utils/Block";
-import {InputEmail} from "../../../../components/input/email";
-import {InputLogin} from "../../../../components/input/login";
-import {InputPhone} from "../../../../components/input/phone";
-import {InputName} from "../../../../components/input/name";
-import {Button} from "../../../../components/button";
-import {Input} from "../../../../components/input";
-
+import { tmpl } from './profile.edit.info.tmpl';
+import Block from '../../../../utils/Block';
+import { InputEmail } from '../../../../components/input/email';
+import { InputLogin } from '../../../../components/input/login';
+import { InputPhone } from '../../../../components/input/phone';
+import { InputName } from '../../../../components/input/name';
+import { SubmitButton } from '../../../../components/button/submit';
 
 export class ProfileEditInfo extends Block {
     constructor() {
@@ -68,24 +66,13 @@ export class ProfileEditInfo extends Block {
                 class: "profile-form__input",
             }, "profile-form__input", "profile-form__input invalid"),
 
-            this.children.button = new Button({
+            this.children.button = new SubmitButton({
                 attributes: [
                     {name: 'type', value: 'submit'},
                 ],
                 label: 'Сохранить',
                 class: 'button',
-                events: {
-                    click: () => {
-                        let formData = {}
-                        Object.entries(this.children).forEach((child) => {
-                            if (child[1] instanceof Input) {
-                                formData[child[1].name] = child[1].value
-                            }
-                        })
-                        console.log(formData)
-                    }
-                },
-            });
+            }, this.children);
     }
 
     protected render(): DocumentFragment {

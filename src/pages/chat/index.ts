@@ -1,6 +1,12 @@
-import Handlebars from "handlebars";
 import {tmpl} from "./chat.tmpl";
+import Block from "../../utils/Block";
 
-export const Chat = () => {
-    return Handlebars.compile(tmpl)({});
+export class Chat extends Block {
+    constructor() {
+        super('div', {});
+    }
+
+    protected render(): DocumentFragment {
+        return this.compile(tmpl, this.props)
+    }
 }

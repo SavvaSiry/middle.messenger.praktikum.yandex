@@ -43,7 +43,7 @@ export const tmpl = `
                 </li>
                 <li class="profile__content__list__item">
                     <label class="text_dark" for="phone">Телефон</label>
-                    <input class="profile-form__input text_light" name="phone" type="number" placeholder="123-321-123">
+                    <input class="profile-form__input text_light" name="phone" type="text" placeholder="123-321-123">
                 </li>
             </ul>
             <button class="button" type="submit">Сохранить</button>

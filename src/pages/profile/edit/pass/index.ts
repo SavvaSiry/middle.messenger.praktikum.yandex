@@ -1,6 +1,13 @@
-import Handlebars from "handlebars";
 import {tmpl} from "./profile.edit.pass.tmpl";
+import Block from "../../../../utils/Block";
 
-export const ProfileEditPass = () => {
-    return Handlebars.compile(tmpl)({});
+
+export class ProfileEditPass extends Block {
+    constructor() {
+        super('div', {});
+    }
+
+    protected render(): DocumentFragment {
+        return this.compile(tmpl, this.props)
+    }
 }

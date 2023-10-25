@@ -4,10 +4,14 @@ export const tmpl = `
         <form class="login-form">
             <div class="card__container">
                 <h1 class="card__title">Вход</h1>
-                <div class="login-form__field">
-                    <label class="login-form__label text_light" for="username">Логин</label>
-                    {{{inputLogin}}}
-                </div>
+                
+                {{{inputLogin}}}
+                
+<!--                <div class="login-form__field">-->
+<!--                    <label class="login-form__label text_light" for="username">Логин</label>-->
+<!--                    {{{inputLogin}}}-->
+<!--                    <span class="login-form__error">Что-то неправильно</span>-->
+<!--                </div>-->
                 <div class="login-form__field">
                     <label class="login-form__label text_light" for="password">Пароль</label>
                     {{{inputPassword}}}

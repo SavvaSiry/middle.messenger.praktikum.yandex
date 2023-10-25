@@ -4,6 +4,7 @@ import { InputLogin } from '../../components/input/login';
 import { InputPassword } from '../../components/input/password';
 import { SubmitButton } from '../../components/button/submit';
 import { Input } from '../../components/input';
+import { NewInput } from '../../components/newInput';
 
 export class Login extends Block {
   constructor() {
@@ -25,25 +26,36 @@ export class Login extends Block {
   protected init() {
     this.children.button = new SubmitButton({
       attributes: [
-        { name: 'type', value: 'submit' },
+        {
+          name: 'type',
+          value: 'submit'
+        },
       ],
       label: 'Войти',
       class: 'button',
     }, this.children);
 
-    this.children.inputLogin = new InputLogin({
-      attributes: [
-        { name: 'placeholder', value: 'Введите логин' },
-        { name: 'name', value: 'username' },
-      ],
-      class: 'login-form__input',
+    this.children.inputLogin = new NewInput({
+      attributes: [],
+      class: 'login-form__field',
+      label: 'Логин',
+      inputClass: 'login-form__input',
     }, 'login-form__input', 'login-form__input invalid');
 
     this.children.inputPassword = new InputPassword({
       attributes: [
-        { name: 'placeholder', value: 'Введите пароль' },
-        { name: 'name', value: 'password' },
-        { name: 'type', value: 'password' },
+        {
+          name: 'placeholder',
+          value: 'Введите пароль'
+        },
+        {
+          name: 'name',
+          value: 'password'
+        },
+        {
+          name: 'type',
+          value: 'password'
+        },
       ],
       class: 'login-form__input',
     }, 'login-form__input', 'login-form__input invalid');

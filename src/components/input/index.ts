@@ -20,11 +20,12 @@ export class Input extends Block {
     if (!props.events || !props.events.blur) {
       props.events = {
         blur: () => {
-          if (this.isValid) {
-            this.props.class = classValid;
-          } else {
-            this.props.class = classInvalid;
-          }
+          this.validate()
+          // if (this.isValid) {
+          //   this.props.class = classValid;
+          // } else {
+          //   this.props.class = classInvalid;
+          // }
         },
       };
     }
@@ -36,6 +37,7 @@ export class Input extends Block {
   }
 
   validate() {
+    console.log("Validate")
     if (this.isValid) {
       this.props.class = this.classValid;
     } else {
@@ -53,9 +55,5 @@ export class Input extends Block {
 
   get name() {
     return (this.element! as HTMLInputElement).name;
-  }
-
-  render() {
-    return this.compile('', this.props);
   }
 }

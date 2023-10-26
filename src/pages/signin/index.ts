@@ -11,7 +11,6 @@ export class Signin extends Block {
     this.children.signinForm = new SigninForm({
       attributes: [],
       class: 'login-form',
-      label: 'Регистрация',
     });
   }
 

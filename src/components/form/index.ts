@@ -27,6 +27,7 @@ export class Form extends Block {
           Object.entries(this.children)
             .forEach((child) => {
               if (child[1] instanceof Input) {
+                child[1].validate();
                 data[child[1].name] = child[1].value;
               }
             });

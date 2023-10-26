@@ -1,4 +1,3 @@
-import Block from '../../../utils/Block';
 import { InputLogin } from '../../input/login';
 import { Input } from '../../input';
 import { InputPassword } from '../../input/password';
@@ -6,45 +5,9 @@ import { Button } from '../../button';
 import { InputPhone } from '../../input/phone';
 import { InputEmail } from '../../input/email';
 import { InputName } from '../../input/name';
+import { Form } from '../index';
 
-interface LoginFormProps {
-  attributes: {
-    name: string,
-    value: string
-  }[],
-  class: string,
-  label: string,
-  events?: {
-    submit: () => void,
-  }
-}
-
-interface formData {
-  [key: string]: string;
-}
-
-export class SigninForm extends Block {
-  constructor(props: LoginFormProps) {
-    if (!props.events) {
-      props.events = {
-        submit: () => {
-          const data: formData = {};
-
-          Object.entries(this.children)
-            .forEach((child) => {
-              if (child[1] instanceof Input) {
-                data[child[1].name] = child[1].value;
-              }
-            });
-
-          console.log(data);
-        },
-      };
-    }
-
-    super('form', props);
-  }
-
+export class SigninForm extends Form {
   protected init() {
     this.children.inputEmail = new InputEmail({
       attributes: [

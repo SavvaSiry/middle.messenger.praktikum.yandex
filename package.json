@@ -7,11 +7,11 @@
     "node": ">=12"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --open",
     "build": "vite build",
     "start": "tsc && vite build && node server.js",
     "preview": "vite preview",
-    "lint": "tsc & stylelint **/*.less & eslint **/*.ts & eslint server.js"
+    "lint": "tsc & stylelint **/*.less & eslint **/*.ts --fix & eslint server.js"
   },
   "devDependencies": {
     "@types/node": "^20.7.1",

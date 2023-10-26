@@ -88,6 +88,13 @@ class Block<P extends Record<string, any> = any> {
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
+  _removeEvents(eventBus: EventBus) {
+    eventBus.off(Block.EVENTS.INIT, this._init.bind(this));
+    eventBus.off(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
+    eventBus.off(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
+    eventBus.off(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
+  }
+
   _createResources() {
     const { tagName } = this._meta;
     this._element = this._createDocumentElement(tagName);
@@ -166,6 +173,7 @@ class Block<P extends Record<string, any> = any> {
   private _render() {
     const fragment = this.render();
 
+    this._removeEvents(this.eventBus());
     this._element!.textContent = '';
 
     this._addAttributes();

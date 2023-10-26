@@ -256,6 +256,7 @@ class Block<P extends Record<string, any> = any> {
   hide() {
     this.getContent()!.style.display = 'none';
   }
+
 }
 
 export default Block;

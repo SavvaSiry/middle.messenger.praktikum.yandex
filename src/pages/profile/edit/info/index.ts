@@ -4,7 +4,6 @@ import { Input } from '../../../../components/input';
 import { ProfileInfoForm } from '../../../../components/form/profile/info';
 
 export class ProfileEditInfo extends Block {
-
   constructor() {
     super('div', {
       events: {
@@ -21,14 +20,11 @@ export class ProfileEditInfo extends Block {
     });
   }
 
-
   protected init() {
-
     this.children.profileInfoForm = new ProfileInfoForm({
-        attributes: [],
-        class: 'profile-form',
-      });
-
+      class: 'profile-form',
+      attributes: [],
+    });
   }
 
   protected render(): DocumentFragment {

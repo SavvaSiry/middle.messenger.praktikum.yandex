@@ -1,89 +1,50 @@
-import Block from '../../../utils/Block';
 import { InputLogin } from '../../input/login';
 import { Input } from '../../input';
 import { InputPassword } from '../../input/password';
 import { Button } from '../../button';
+import { Form } from '../index';
 
-interface LoginFormProps {
-  attributes: {
-    name: string,
-    value: string
-  }[],
-  class: string,
-  label: string,
-  events?: {
-    submit: () => void,
-  }
-}
-
-interface formData {
-  [key: string]: string;
-}
-
-export class LoginForm extends Block {
-
-  constructor(props: LoginFormProps) {
-    if (!props.events) {
-      props.events = {
-        submit: () => {
-          const data: formData = {};
-
-          Object.entries(this.children)
-            .forEach((child) => {
-              if (child[1] instanceof Input) {
-                data[child[1].name] = child[1].value;
-              }
-            });
-
-          console.log(data);
-        }
-      };
-    }
-
-    super('form', props);
-  }
-
+export class LoginForm extends Form {
   protected init() {
-
     this.children.inputLogin = new InputLogin({
       attributes: [{
         name: 'name',
-        value: 'login'
+        value: 'login',
       }],
       class: 'login-form__input',
       events: {
         blur: () => {
           if (this.children.inputLogin instanceof Input) {
-            let input: Input = this.children.inputLogin;
+            const input: Input = this.children.inputLogin;
             this.props.errorMessage = input.validate();
           }
-        }
-      }
+        },
+      },
     }, 'login-form__input', 'login-form__input invalid');
 
     this.children.inputPassword = new InputPassword({
       attributes: [{
         name: 'type',
-        value: 'password'
+        value: 'password',
       },
-        {
-          name: 'name',
-          value: 'password'
-        }],
+      {
+        name: 'name',
+        value: 'password',
+      }],
       class: 'login-form__input',
       events: {
         blur: () => {
 
-        }
-      }
+        },
+      },
     }, 'login-form__input', 'login-form__input invalid');
 
     this.children.button = new Button({
       attributes: [
         {
           name: 'type',
-          value: 'submit'
-        }
+          value: 'submit',
+        },
       ],
       label: 'Войти',
       class: 'button',

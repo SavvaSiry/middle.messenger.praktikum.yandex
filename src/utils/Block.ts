@@ -154,7 +154,7 @@ class Block<P extends Record<string, any> = any> {
   }
 
   protected componentDidUpdate(oldProps: P, newProps: P) {
-    //console.log(oldProps, newProps);
+    console.log(oldProps, newProps);
     return true;
   }
 
@@ -256,7 +256,6 @@ class Block<P extends Record<string, any> = any> {
   hide() {
     this.getContent()!.style.display = 'none';
   }
-
 }
 
 export default Block;

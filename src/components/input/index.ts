@@ -12,15 +12,15 @@ interface InputProps {
 }
 
 export class Input extends Block {
-
   protected classValid: string;
+
   protected classInvalid: string;
 
   constructor(props: InputProps, classValid: string, classInvalid: string) {
     if (!props.events || !props.events.blur) {
       props.events = {
         blur: () => {
-          this.validate()
+          this.validate();
           // if (this.isValid) {
           //   this.props.class = classValid;
           // } else {
@@ -39,11 +39,10 @@ export class Input extends Block {
   public validate(): string {
     if (this.isValid) {
       this.props.class = this.classValid;
-      return "Valid"
-    } else {
-      this.props.class = this.classInvalid;
-      return "Invalid"
+      return 'Valid';
     }
+    this.props.class = this.classInvalid;
+    return 'Invalid';
   }
 
   get isValid() {

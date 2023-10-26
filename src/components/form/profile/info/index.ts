@@ -1,58 +1,36 @@
-import Block from '../../../../utils/Block';
 import { Input } from '../../../input';
 import { Button } from '../../../button';
 import { InputPhone } from '../../../input/phone';
 import { InputEmail } from '../../../input/email';
 import { InputLogin } from '../../../input/login';
 import { InputName } from '../../../input/name';
+import { Form } from '../../index';
 
-export class ProfileInfoForm extends Block {
-
-  constructor(props: LoginFormProps) {
-    if (!props.events) {
-      props.events = {
-        submit: () => {
-          const data: formData = {};
-
-          Object.entries(this.children)
-            .forEach((child) => {
-              if (child[1] instanceof Input) {
-                data[child[1].name] = child[1].value;
-              }
-            });
-
-          console.log(data);
-        }
-      };
-    }
-    super('form', props);
-  }
-
+export class ProfileInfoForm extends Form {
   protected init() {
-
     this.children.inputEmail = new InputEmail({
       attributes: [
         {
           name: 'placeholder',
-          value: 'example@mail.ru'
+          value: 'example@mail.ru',
         },
         {
           name: 'name',
-          value: 'email'
+          value: 'email',
         },
         {
           name: 'type',
-          value: 'text'
+          value: 'text',
         },
       ],
       class: 'profile-form__input',
       events: {
         blur: () => {
           if (this.children.inputEmail instanceof Input) {
-            let input: Input = this.children.inputEmail;
+            const input: Input = this.children.inputEmail;
             this.props.errorEmail = input.validate();
           }
-        }
+        },
       },
     }, 'profile-form__input', 'profile-form__input invalid');
 
@@ -60,25 +38,25 @@ export class ProfileInfoForm extends Block {
       attributes: [
         {
           name: 'placeholder',
-          value: 'example'
+          value: 'example',
         },
         {
           name: 'name',
-          value: 'login'
+          value: 'login',
         },
         {
           name: 'type',
-          value: 'text'
+          value: 'text',
         },
       ],
       class: 'profile-form__input',
       events: {
         blur: () => {
           if (this.children.inputLogin instanceof Input) {
-            let input: Input = this.children.inputLogin;
+            const input: Input = this.children.inputLogin;
             this.props.errorLogin = input.validate();
           }
-        }
+        },
       },
     }, 'profile-form__input', 'profile-form__input invalid');
 
@@ -86,25 +64,25 @@ export class ProfileInfoForm extends Block {
       attributes: [
         {
           name: 'placeholder',
-          value: 'Иван'
+          value: 'Иван',
         },
         {
           name: 'name',
-          value: 'first_name'
+          value: 'first_name',
         },
         {
           name: 'type',
-          value: 'text'
+          value: 'text',
         },
       ],
       class: 'profile-form__input',
       events: {
         blur: () => {
           if (this.children.inputUsername instanceof Input) {
-            let input: Input = this.children.inputUsername;
+            const input: Input = this.children.inputUsername;
             this.props.errorUsername = input.validate();
           }
-        }
+        },
       },
     }, 'profile-form__input', 'profile-form__input invalid');
 
@@ -112,25 +90,25 @@ export class ProfileInfoForm extends Block {
       attributes: [
         {
           name: 'placeholder',
-          value: 'Иванов'
+          value: 'Иванов',
         },
         {
           name: 'name',
-          value: 'second_name'
+          value: 'second_name',
         },
         {
           name: 'type',
-          value: 'text'
+          value: 'text',
         },
       ],
       class: 'profile-form__input',
       events: {
         blur: () => {
           if (this.children.inputSecondName instanceof Input) {
-            let input: Input = this.children.inputSecondName;
+            const input: Input = this.children.inputSecondName;
             this.props.errorSecondName = input.validate();
           }
-        }
+        },
       },
     }, 'profile-form__input', 'profile-form__input invalid');
 
@@ -138,25 +116,25 @@ export class ProfileInfoForm extends Block {
       attributes: [
         {
           name: 'placeholder',
-          value: 'Иван'
+          value: 'Иван',
         },
         {
           name: 'name',
-          value: 'display_name'
+          value: 'display_name',
         },
         {
           name: 'type',
-          value: 'text'
+          value: 'text',
         },
       ],
       class: 'profile-form__input',
       events: {
         blur: () => {
           if (this.children.inputDisplayName instanceof Input) {
-            let input: Input = this.children.inputDisplayName;
+            const input: Input = this.children.inputDisplayName;
             this.props.errorDisplayName = input.validate();
           }
-        }
+        },
       },
     }, 'profile-form__input', 'profile-form__input invalid');
 
@@ -164,25 +142,25 @@ export class ProfileInfoForm extends Block {
       attributes: [
         {
           name: 'placeholder',
-          value: '123-321-123'
+          value: '123-321-123',
         },
         {
           name: 'name',
-          value: 'phone'
+          value: 'phone',
         },
         {
           name: 'type',
-          value: 'text'
+          value: 'text',
         },
       ],
       class: 'profile-form__input',
       events: {
         blur: () => {
           if (this.children.inputPhone instanceof Input) {
-            let input: Input = this.children.inputPhone;
+            const input: Input = this.children.inputPhone;
             this.props.errorPhone = input.validate();
           }
-        }
+        },
       },
     }, 'profile-form__input', 'profile-form__input invalid');
 
@@ -190,8 +168,8 @@ export class ProfileInfoForm extends Block {
       attributes: [
         {
           name: 'type',
-          value: 'submit'
-        }
+          value: 'submit',
+        },
       ],
       label: 'Сохранить',
       class: 'button',

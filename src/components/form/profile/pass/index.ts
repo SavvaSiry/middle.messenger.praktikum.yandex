@@ -1,38 +1,15 @@
-import Block from '../../../../utils/Block';
 import { Input } from '../../../input';
 import { InputPassword } from '../../../input/password';
 import { Button } from '../../../button';
+import { Form } from '../../index';
 
-export class ProfilePasswordForm extends Block {
-
-  constructor(props: LoginFormProps) {
-    if (!props.events) {
-      props.events = {
-        submit: () => {
-          const data: formData = {};
-
-          Object.entries(this.children)
-            .forEach((child) => {
-              if (child[1] instanceof Input) {
-                data[child[1].name] = child[1].value;
-              }
-            });
-
-          console.log(data);
-        }
-      };
-    }
-
-    super('form', props);
-  }
-
+export class ProfilePasswordForm extends Form {
   protected init() {
-
     this.children.oldPassword = new InputPassword({
       attributes: [
         {
           name: 'placeholder',
-          value: '*********'
+          value: '*********',
         },
         {
           name: 'name',
@@ -46,10 +23,10 @@ export class ProfilePasswordForm extends Block {
       events: {
         blur: () => {
           if (this.children.oldPassword instanceof Input) {
-            let input: Input = this.children.oldPassword;
+            const input: Input = this.children.oldPassword;
             this.props.errorOldPassword = input.validate();
           }
-        }
+        },
       },
       class: 'profile-form__input',
     }, 'profile-form__input', 'profile-form__input invalid');
@@ -58,7 +35,7 @@ export class ProfilePasswordForm extends Block {
       attributes: [
         {
           name: 'placeholder',
-          value: '*********'
+          value: '*********',
         },
         {
           name: 'name',
@@ -72,10 +49,10 @@ export class ProfilePasswordForm extends Block {
       events: {
         blur: () => {
           if (this.children.newPassword instanceof Input) {
-            let input: Input = this.children.newPassword;
+            const input: Input = this.children.newPassword;
             this.props.errorNewPassword = input.validate();
           }
-        }
+        },
       },
       class: 'profile-form__input',
     }, 'profile-form__input', 'profile-form__input invalid');
@@ -84,7 +61,7 @@ export class ProfilePasswordForm extends Block {
       attributes: [
         {
           name: 'placeholder',
-          value: '*********'
+          value: '*********',
         },
         {
           name: 'name',
@@ -98,10 +75,10 @@ export class ProfilePasswordForm extends Block {
       events: {
         blur: () => {
           if (this.children.newPasswordAgain instanceof Input) {
-            let input: Input = this.children.newPasswordAgain;
+            const input: Input = this.children.newPasswordAgain;
             this.props.errorNewPasswordAgain = input.validate();
           }
-        }
+        },
       },
       class: 'profile-form__input',
     }, 'profile-form__input', 'profile-form__input invalid');
@@ -110,8 +87,8 @@ export class ProfilePasswordForm extends Block {
       attributes: [
         {
           name: 'type',
-          value: 'submit'
-        }
+          value: 'submit',
+        },
       ],
       label: 'Сохранить',
       class: 'button',

@@ -24,7 +24,6 @@ interface formData {
 }
 
 export class SigninForm extends Block {
-
   constructor(props: LoginFormProps) {
     if (!props.events) {
       props.events = {
@@ -39,7 +38,7 @@ export class SigninForm extends Block {
             });
 
           console.log(data);
-        }
+        },
       };
     }
 
@@ -47,7 +46,6 @@ export class SigninForm extends Block {
   }
 
   protected init() {
-
     this.children.inputEmail = new InputEmail({
       attributes: [
         {
@@ -66,10 +64,10 @@ export class SigninForm extends Block {
       events: {
         blur: () => {
           if (this.children.inputEmail instanceof Input) {
-            let input: Input = this.children.inputEmail
+            const input: Input = this.children.inputEmail;
             this.props.errorMessageEmail = input.validate();
           }
-        }
+        },
       },
       class: 'login-form__input',
     }, 'login-form__input', 'login-form__input invalid');
@@ -92,10 +90,10 @@ export class SigninForm extends Block {
       events: {
         blur: () => {
           if (this.children.inputLogin instanceof Input) {
-            let input: Input = this.children.inputLogin
+            const input: Input = this.children.inputLogin;
             this.props.errorMessageLogin = input.validate();
           }
-        }
+        },
       },
       class: 'login-form__input',
     }, 'login-form__input', 'login-form__input invalid');
@@ -118,10 +116,10 @@ export class SigninForm extends Block {
       events: {
         blur: () => {
           if (this.children.inputUsername instanceof Input) {
-            let input: Input = this.children.inputUsername
+            const input: Input = this.children.inputUsername;
             this.props.errorMessageUsername = input.validate();
           }
-        }
+        },
       },
       class: 'login-form__input',
     }, 'login-form__input', 'login-form__input invalid');
@@ -144,10 +142,10 @@ export class SigninForm extends Block {
       events: {
         blur: () => {
           if (this.children.inputSecondName instanceof Input) {
-            let input: Input = this.children.inputSecondName
+            const input: Input = this.children.inputSecondName;
             this.props.errorMessageSecondName = input.validate();
           }
-        }
+        },
       },
       class: 'login-form__input',
     }, 'login-form__input', 'login-form__input invalid');
@@ -170,10 +168,10 @@ export class SigninForm extends Block {
       events: {
         blur: () => {
           if (this.children.inputPhone instanceof Input) {
-            let input: Input = this.children.inputPhone
+            const input: Input = this.children.inputPhone;
             this.props.errorMessagePhone = input.validate();
           }
-        }
+        },
       },
       class: 'login-form__input',
     }, 'login-form__input', 'login-form__input invalid');
@@ -196,10 +194,10 @@ export class SigninForm extends Block {
       events: {
         blur: () => {
           if (this.children.inputPassword instanceof Input) {
-            let input: Input = this.children.inputPassword
+            const input: Input = this.children.inputPassword;
             this.props.errorMessagePassword = input.validate();
           }
-        }
+        },
       },
       class: 'login-form__input',
     }, 'login-form__input', 'login-form__input invalid');
@@ -222,10 +220,10 @@ export class SigninForm extends Block {
       events: {
         blur: () => {
           if (this.children.inputPasswordAgain instanceof Input) {
-            let input: Input = this.children.inputPasswordAgain
+            const input: Input = this.children.inputPasswordAgain;
             this.props.errorMessagePasswordAgain = input.validate();
           }
-        }
+        },
       },
       class: 'login-form__input',
     }, 'login-form__input', 'login-form__input invalid');
@@ -234,8 +232,8 @@ export class SigninForm extends Block {
       attributes: [
         {
           name: 'type',
-          value: 'submit'
-        }
+          value: 'submit',
+        },
       ],
       label: 'Зарегестрироваться',
       class: 'button',

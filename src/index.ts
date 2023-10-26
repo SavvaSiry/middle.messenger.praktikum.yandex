@@ -5,11 +5,12 @@ import { Profile } from './pages/profile/main';
 import { Error404 } from './pages/errors/error404';
 import { Error500 } from './pages/errors/error500';
 import { ProfileEditInfo } from './pages/profile/edit/info';
+import { Home } from './pages/home';
 import { ProfileEditPass } from './pages/profile/edit/pass';
 import Block from './utils/Block';
 
 const ROUTES: Record<string, Block> = {
-  '/': new Chat(),
+  '/': new Home(),
   '/login': new Login(),
   '/signin': new Signin(),
   '/profile': new Profile(),

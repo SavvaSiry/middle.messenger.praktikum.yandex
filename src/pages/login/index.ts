@@ -1,6 +1,5 @@
 import { tmpl } from './login.tmpl';
 import Block from '../../utils/Block';
-import { InputLogin } from '../../components/input/login';
 import { InputPassword } from '../../components/input/password';
 import { SubmitButton } from '../../components/button/submit';
 import { Input } from '../../components/input';

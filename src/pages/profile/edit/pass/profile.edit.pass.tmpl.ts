@@ -19,27 +19,29 @@ export const tmpl = `
         <div class="profile__content__username text_dark">
             Иван
         </div>
-        <form class="profile-form">
-            <ul class="profile__content__list">
-                <li class="profile__content__list__item">
-                    <label class="text_dark" for="email">Старый пароль</label>
-                    {{{oldPassword}}}
-<!--                    <input class="profile-form__input" name="oldPassword" type="password" placeholder="*********">-->
-                </li>
-                <li class="profile__content__list__item">
-                    <label class="text_dark" for="login">Новый пароль</label>
-                    {{{newPassword}}}
-<!--                    <input class="profile-form__input" name="newPassword" type="password" placeholder="*********">-->
-                </li>
-                <li class="profile__content__list__item">
-                    <label class="text_dark" for="first_name">Повторите новый пароль</label>
-                    {{{newPasswordAgain}}}
-<!--                    <input class="profile-form__input" name="newPassword" type="password" placeholder="*********">-->
-                </li>
-            </ul>
-            {{{button}}}
-<!--            <button class="button" type="submit">Сохранить</button>-->
-        </form>
+        
+        {{{profilePasswordForm}}}
+<!--        <form class="profile-form">-->
+<!--            <ul class="profile__content__list">-->
+<!--                <li class="profile__content__list__item">-->
+<!--                    <label class="text_dark" for="email">Старый пароль</label>-->
+<!--                    {{{oldPassword}}}-->
+<!--&lt;!&ndash;                    <input class="profile-form__input" name="oldPassword" type="password" placeholder="*********">&ndash;&gt;-->
+<!--                </li>-->
+<!--                <li class="profile__content__list__item">-->
+<!--                    <label class="text_dark" for="login">Новый пароль</label>-->
+<!--                    {{{newPassword}}}-->
+<!--&lt;!&ndash;                    <input class="profile-form__input" name="newPassword" type="password" placeholder="*********">&ndash;&gt;-->
+<!--                </li>-->
+<!--                <li class="profile__content__list__item">-->
+<!--                    <label class="text_dark" for="first_name">Повторите новый пароль</label>-->
+<!--                    {{{newPasswordAgain}}}-->
+<!--&lt;!&ndash;                    <input class="profile-form__input" name="newPassword" type="password" placeholder="*********">&ndash;&gt;-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--            {{{button}}}-->
+<!--&lt;!&ndash;            <button class="button" type="submit">Сохранить</button>&ndash;&gt;-->
+<!--        </form>-->
     </div>
 </div>
 `;

@@ -46,22 +46,30 @@ export class LoginForm extends Block {
   protected init() {
 
     this.children.inputLogin = new InputLogin({
-      attributes: [],
+      attributes: [{
+        name: 'name',
+        value: 'login'
+      }],
       class: 'login-form__input',
       events: {
         blur: () => {
-          if (this.children.inputLogin.isValid) {
-            this.props.errorMessage = '';
-          } else {
-            this.props.errorMessage = 'Плохо';
+          if (this.children.inputLogin instanceof Input) {
+            let input: Input = this.children.inputLogin;
+            this.props.errorMessage = input.validate();
           }
-          this.children.inputLogin.validate();
         }
       }
     }, 'login-form__input', 'login-form__input invalid');
 
     this.children.inputPassword = new InputPassword({
-      attributes: [{name: "type", value: "password"}],
+      attributes: [{
+        name: 'type',
+        value: 'password'
+      },
+        {
+          name: 'name',
+          value: 'password'
+        }],
       class: 'login-form__input',
       events: {
         blur: () => {

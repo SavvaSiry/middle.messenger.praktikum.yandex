@@ -105,11 +105,11 @@ class Block<P extends Record<string, any> = any> {
   _addAttributes() {
     this._addClass();
 
-    type attributeType = { name: string, value: string }
+    type AttributeType = { name: string, value: string }
 
     if (this.props.attributes) {
       this.props.attributes
-        .forEach((attr: attributeType) => this._element?.setAttribute(attr.name, attr.value));
+        .forEach((attr: AttributeType) => this._element?.setAttribute(attr.name, attr.value));
     }
   }
 

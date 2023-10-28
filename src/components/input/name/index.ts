@@ -9,8 +9,8 @@ export class InputName extends Input {
     if (this.isValid) {
       this.props.class = this.classValid;
       return '';
-    }
-    this.props.class = this.classInvalid;
-    return 'Можно использовать буквы и "-"';
+    } if (!/^[A-ZА-Я]/.test(this.value)) {
+      return 'Строка должна начинаться с заглавной буквы';
+    } return 'Допускаются только буквы и знак "-"';
   }
 }

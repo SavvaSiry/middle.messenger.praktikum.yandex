@@ -1,9 +1,60 @@
 import { Input } from '../../../input';
 import { InputPassword } from '../../../input/password';
 import { Button } from '../../../button';
-import { Form } from '../../index';
+import { Form, FormProps } from '../../index';
+
+interface FormData {
+  [key: string]: string;
+}
 
 export class ProfilePasswordForm extends Form {
+  constructor(props: FormProps) {
+    if (!props.events) {
+      props.events = {
+        submit: (event: Event) => {
+          event.preventDefault();
+
+          this.validateOldPassword();
+          this.validateNewPassword();
+          this.validateNewPasswordAgain();
+
+          const data: FormData = {};
+
+          Object.entries(this.children)
+            .forEach((child) => {
+              if (child[1] instanceof Input) {
+                data[child[1].name] = child[1].value;
+              }
+            });
+
+          console.log(data);
+        },
+      };
+    }
+    super(props);
+  }
+
+  private validateOldPassword() {
+    if (this.children.oldPassword instanceof Input) {
+      const input: Input = this.children.oldPassword;
+      this.props.errorOldPassword = input.validate();
+    }
+  }
+
+  private validateNewPassword() {
+    if (this.children.newPassword instanceof Input) {
+      const input: Input = this.children.newPassword;
+      this.props.errorNewPassword = input.validate();
+    }
+  }
+
+  private validateNewPasswordAgain() {
+    if (this.children.newPasswordAgain instanceof Input) {
+      const input: Input = this.children.newPasswordAgain;
+      this.props.errorNewPasswordAgain = input.validate();
+    }
+  }
+
   protected init() {
     this.children.oldPassword = new InputPassword({
       attributes: [
@@ -21,12 +72,7 @@ export class ProfilePasswordForm extends Form {
         },
       ],
       events: {
-        blur: () => {
-          if (this.children.oldPassword instanceof Input) {
-            const input: Input = this.children.oldPassword;
-            this.props.errorOldPassword = input.validate();
-          }
-        },
+        blur: () => this.validateOldPassword(),
       },
       class: 'profile-form__input',
     }, 'profile-form__input', 'profile-form__input invalid');
@@ -47,12 +93,7 @@ export class ProfilePasswordForm extends Form {
         },
       ],
       events: {
-        blur: () => {
-          if (this.children.newPassword instanceof Input) {
-            const input: Input = this.children.newPassword;
-            this.props.errorNewPassword = input.validate();
-          }
-        },
+        blur: () => this.validateNewPassword(),
       },
       class: 'profile-form__input',
     }, 'profile-form__input', 'profile-form__input invalid');
@@ -73,12 +114,7 @@ export class ProfilePasswordForm extends Form {
         },
       ],
       events: {
-        blur: () => {
-          if (this.children.newPasswordAgain instanceof Input) {
-            const input: Input = this.children.newPasswordAgain;
-            this.props.errorNewPasswordAgain = input.validate();
-          }
-        },
+        blur: () => this.validateNewPasswordAgain(),
       },
       class: 'profile-form__input',
     }, 'profile-form__input', 'profile-form__input invalid');

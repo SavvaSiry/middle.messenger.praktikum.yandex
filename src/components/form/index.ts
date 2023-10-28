@@ -1,7 +1,7 @@
 import Block from '../../utils/Block';
 import { Input } from '../input';
 
-interface FormProps {
+export interface FormProps {
   class: string,
   attributes: {
     name: string;
@@ -27,7 +27,7 @@ export class Form extends Block {
           Object.entries(this.children)
             .forEach((child) => {
               if (child[1] instanceof Input) {
-                child[1].validate();
+                child[1].element?.blur();
                 data[child[1].name] = child[1].value;
               }
             });

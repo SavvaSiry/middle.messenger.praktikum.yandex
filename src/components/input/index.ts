@@ -21,11 +21,6 @@ export class Input extends Block {
       props.events = {
         blur: () => {
           this.validate();
-          // if (this.isValid) {
-          //   this.props.class = classValid;
-          // } else {
-          //   this.props.class = classInvalid;
-          // }
         },
       };
     }

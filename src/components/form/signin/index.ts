@@ -5,9 +5,92 @@ import { Button } from '../../button';
 import { InputPhone } from '../../input/phone';
 import { InputEmail } from '../../input/email';
 import { InputName } from '../../input/name';
-import { Form } from '../index';
+import { Form, FormProps } from '../index';
+
+interface FormData {
+  [key: string]: string;
+}
 
 export class SigninForm extends Form {
+  constructor(props: FormProps) {
+    if (!props.events) {
+      props.events = {
+        submit: (event: Event) => {
+          event.preventDefault();
+
+          this.validateEmail();
+          this.validateLogin();
+          this.validateUsername();
+          this.validateSecondName();
+          this.validatePhone();
+          this.validatePassword();
+          this.validatePasswordAgain();
+
+          const data: FormData = {};
+
+          Object.entries(this.children)
+            .forEach((child) => {
+              if (child[1] instanceof Input) {
+                data[child[1].name] = child[1].value;
+              }
+            });
+
+          console.log(data);
+        },
+      };
+    }
+    super(props);
+  }
+
+  validateEmail() {
+    if (this.children.inputEmail instanceof Input) {
+      const input: Input = this.children.inputEmail;
+      this.props.errorMessageEmail = input.validate();
+    }
+  }
+
+  validateLogin() {
+    if (this.children.inputLogin instanceof Input) {
+      const input: Input = this.children.inputLogin;
+      this.props.errorMessageLogin = input.validate();
+    }
+  }
+
+  validateUsername() {
+    if (this.children.inputUsername instanceof Input) {
+      const input: Input = this.children.inputUsername;
+      this.props.errorMessageUsername = input.validate();
+    }
+  }
+
+  validateSecondName() {
+    if (this.children.inputSecondName instanceof Input) {
+      const input: Input = this.children.inputSecondName;
+      this.props.errorMessageSecondName = input.validate();
+    }
+  }
+
+  validatePhone() {
+    if (this.children.inputPhone instanceof Input) {
+      const input: Input = this.children.inputPhone;
+      this.props.errorMessagePhone = input.validate();
+    }
+  }
+
+  validatePassword() {
+    if (this.children.inputPassword instanceof Input) {
+      const input: Input = this.children.inputPassword;
+      this.props.errorMessagePassword = input.validate();
+    }
+  }
+
+  validatePasswordAgain() {
+    if (this.children.inputPasswordAgain instanceof Input) {
+      const input: Input = this.children.inputPasswordAgain;
+      this.props.errorMessagePasswordAgain = input.validate();
+    }
+  }
+
   protected init() {
     this.children.inputEmail = new InputEmail({
       attributes: [
@@ -26,10 +109,7 @@ export class SigninForm extends Form {
       ],
       events: {
         blur: () => {
-          if (this.children.inputEmail instanceof Input) {
-            const input: Input = this.children.inputEmail;
-            this.props.errorMessageEmail = input.validate();
-          }
+          this.validateEmail();
         },
       },
       class: 'login-form__input',
@@ -52,11 +132,9 @@ export class SigninForm extends Form {
       ],
       events: {
         blur: () => {
-          if (this.children.inputLogin instanceof Input) {
-            const input: Input = this.children.inputLogin;
-            this.props.errorMessageLogin = input.validate();
-          }
+          this.validateLogin();
         },
+
       },
       class: 'login-form__input',
     }, 'login-form__input', 'login-form__input invalid');
@@ -78,10 +156,7 @@ export class SigninForm extends Form {
       ],
       events: {
         blur: () => {
-          if (this.children.inputUsername instanceof Input) {
-            const input: Input = this.children.inputUsername;
-            this.props.errorMessageUsername = input.validate();
-          }
+          this.validateUsername();
         },
       },
       class: 'login-form__input',
@@ -104,10 +179,7 @@ export class SigninForm extends Form {
       ],
       events: {
         blur: () => {
-          if (this.children.inputSecondName instanceof Input) {
-            const input: Input = this.children.inputSecondName;
-            this.props.errorMessageSecondName = input.validate();
-          }
+          this.validateSecondName();
         },
       },
       class: 'login-form__input',
@@ -130,10 +202,7 @@ export class SigninForm extends Form {
       ],
       events: {
         blur: () => {
-          if (this.children.inputPhone instanceof Input) {
-            const input: Input = this.children.inputPhone;
-            this.props.errorMessagePhone = input.validate();
-          }
+          this.validatePhone();
         },
       },
       class: 'login-form__input',
@@ -156,10 +225,7 @@ export class SigninForm extends Form {
       ],
       events: {
         blur: () => {
-          if (this.children.inputPassword instanceof Input) {
-            const input: Input = this.children.inputPassword;
-            this.props.errorMessagePassword = input.validate();
-          }
+          this.validatePassword();
         },
       },
       class: 'login-form__input',
@@ -182,10 +248,7 @@ export class SigninForm extends Form {
       ],
       events: {
         blur: () => {
-          if (this.children.inputPasswordAgain instanceof Input) {
-            const input: Input = this.children.inputPasswordAgain;
-            this.props.errorMessagePasswordAgain = input.validate();
-          }
+          this.validatePasswordAgain();
         },
       },
       class: 'login-form__input',

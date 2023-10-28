@@ -21,7 +21,7 @@ export class Button extends Block {
     this.element?.setAttribute('class', this.props.class);
   }
 
-  render() {
+  render(): DocumentFragment {
     return this.compile('{{label}}', this.props);
   }
 }

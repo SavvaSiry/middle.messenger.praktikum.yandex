@@ -72,7 +72,7 @@ class Block<P extends Record<string, any> = any> {
     };
   }
 
-  _addEvents() {
+  private _addEvents() {
     const { events = {} } = this.props as P & { events: Record<string, () => void> };
 
     Object.keys(events)
@@ -81,18 +81,20 @@ class Block<P extends Record<string, any> = any> {
       });
   }
 
+  private _removeEvents() {
+    const { events = {} } = this.props as P & { events: Record<string, () => void> };
+
+    Object.keys(events)
+      .forEach((eventName) => {
+        this._element?.removeEventListener(eventName, events[eventName]);
+      });
+  }
+
   _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
-  }
-
-  _removeEvents(eventBus: EventBus) {
-    eventBus.off(Block.EVENTS.INIT, this._init.bind(this));
-    eventBus.off(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
-    eventBus.off(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
-    eventBus.off(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
   _createResources() {
@@ -173,7 +175,8 @@ class Block<P extends Record<string, any> = any> {
   private _render() {
     const fragment = this.render();
 
-    this._removeEvents(this.eventBus());
+    this._removeEvents();
+
     this._element!.textContent = '';
 
     this._addAttributes();
@@ -183,34 +186,49 @@ class Block<P extends Record<string, any> = any> {
     this._addEvents();
   }
 
+  /* ВАЖНО:
+  * Ниже был добавлен костыль с блокировкой потока на выполнение, так как
+  * event "SUBMIT" - при нажатии на ENTER вызывает, так же событие "BLUR", что
+  * приводит к одновременному обновлению данных двумя потоками, что в конечном
+  * итоге приводит к ошибке, так как первый поток заканчивает обновление раньше,
+  * второй обновляет уже не существующие данные, из-за чего происходит ошибка
+  *  */
+  private isExecuting: boolean = false;
+
   protected compile(template: string, context: any) {
-    const contextAndStubs = { ...context };
-
-    Object.entries(this.children)
-      .forEach(([name, component]) => {
-        contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
-      });
-
-    const html = Handlebars.compile(template)(contextAndStubs);
-
     const temp = document.createElement('template');
 
-    temp.innerHTML = html;
+    if (!this.isExecuting) {
+      this.isExecuting = true;
 
-    Object.entries(this.children)
-      .forEach(([, component]) => {
-        const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
+      const contextAndStubs = { ...context };
 
-        if (!stub) {
-          return;
-        }
+      Object.entries(this.children)
+        .forEach(([name, component]) => {
+          contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
+        });
 
-        component.getContent()
-          ?.append(...Array.from(stub.childNodes));
+      const html = Handlebars.compile(template)(contextAndStubs);
 
-        stub.replaceWith(component.getContent()!);
-      });
+      temp.innerHTML = html;
 
+      Object.entries(this.children)
+        .forEach(([, component]) => {
+          const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
+
+          if (!stub) {
+            return;
+          }
+
+          component.getContent()
+            ?.append(...Array.from(stub.childNodes));
+
+          stub.replaceWith(component.getContent()!);
+        });
+
+      this.isExecuting = false;
+      return temp.content;
+    }
     return temp.content;
   }
 

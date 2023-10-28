@@ -4,9 +4,84 @@ import { InputPhone } from '../../../input/phone';
 import { InputEmail } from '../../../input/email';
 import { InputLogin } from '../../../input/login';
 import { InputName } from '../../../input/name';
-import { Form } from '../../index';
+import { Form, FormProps } from '../../index';
+
+interface FormData {
+  [key: string]: string;
+}
 
 export class ProfileInfoForm extends Form {
+  constructor(props: FormProps) {
+    if (!props.events) {
+      props.events = {
+        submit: (event: Event) => {
+          event.preventDefault();
+
+          this.validateEmail();
+          this.validateLogin();
+          this.validateName();
+          this.validateUsername();
+          this.validateDisplayName();
+          this.validatePhone();
+
+          const data: FormData = {};
+
+          Object.entries(this.children)
+            .forEach((child) => {
+              if (child[1] instanceof Input) {
+                data[child[1].name] = child[1].value;
+              }
+            });
+
+          console.log(data);
+        },
+      };
+    }
+    super(props);
+  }
+
+  validateEmail() {
+    if (this.children.inputEmail instanceof Input) {
+      const input: Input = this.children.inputEmail;
+      this.props.errorEmail = input.validate();
+    }
+  }
+
+  validateLogin() {
+    if (this.children.inputLogin instanceof Input) {
+      const input: Input = this.children.inputLogin;
+      this.props.errorLogin = input.validate();
+    }
+  }
+
+  private validateUsername() {
+    if (this.children.inputUsername instanceof Input) {
+      const input: Input = this.children.inputUsername;
+      this.props.errorUsername = input.validate();
+    }
+  }
+
+  private validateName() {
+    if (this.children.inputSecondName instanceof Input) {
+      const input: Input = this.children.inputSecondName;
+      this.props.errorSecondName = input.validate();
+    }
+  }
+
+  private validateDisplayName() {
+    if (this.children.inputDisplayName instanceof Input) {
+      const input: Input = this.children.inputDisplayName;
+      this.props.errorDisplayName = input.validate();
+    }
+  }
+
+  private validatePhone() {
+    if (this.children.inputPhone instanceof Input) {
+      const input: Input = this.children.inputPhone;
+      this.props.errorPhone = input.validate();
+    }
+  }
+
   protected init() {
     this.children.inputEmail = new InputEmail({
       attributes: [
@@ -25,12 +100,7 @@ export class ProfileInfoForm extends Form {
       ],
       class: 'profile-form__input',
       events: {
-        blur: () => {
-          if (this.children.inputEmail instanceof Input) {
-            const input: Input = this.children.inputEmail;
-            this.props.errorEmail = input.validate();
-          }
-        },
+        blur: () => this.validateEmail(),
       },
     }, 'profile-form__input', 'profile-form__input invalid');
 
@@ -51,40 +121,34 @@ export class ProfileInfoForm extends Form {
       ],
       class: 'profile-form__input',
       events: {
-        blur: () => {
-          if (this.children.inputLogin instanceof Input) {
-            const input: Input = this.children.inputLogin;
-            this.props.errorLogin = input.validate();
-          }
-        },
+        blur: () => this.validateLogin(),
       },
     }, 'profile-form__input', 'profile-form__input invalid');
 
-    this.children.inputUsername = new InputName({
-      attributes: [
-        {
-          name: 'placeholder',
-          value: 'Иван',
-        },
-        {
-          name: 'name',
-          value: 'first_name',
-        },
-        {
-          name: 'type',
-          value: 'text',
-        },
-      ],
-      class: 'profile-form__input',
-      events: {
-        blur: () => {
-          if (this.children.inputUsername instanceof Input) {
-            const input: Input = this.children.inputUsername;
-            this.props.errorUsername = input.validate();
-          }
+    this.children.inputUsername = new InputName(
+      {
+        attributes: [
+          {
+            name: 'placeholder',
+            value: 'Иван',
+          },
+          {
+            name: 'name',
+            value: 'first_name',
+          },
+          {
+            name: 'type',
+            value: 'text',
+          },
+        ],
+        class: 'profile-form__input',
+        events: {
+          blur: () => this.validateUsername(),
         },
       },
-    }, 'profile-form__input', 'profile-form__input invalid');
+      'profile-form__input',
+      'profile-form__input invalid',
+    );
 
     this.children.inputSecondName = new InputName({
       attributes: [
@@ -103,12 +167,7 @@ export class ProfileInfoForm extends Form {
       ],
       class: 'profile-form__input',
       events: {
-        blur: () => {
-          if (this.children.inputSecondName instanceof Input) {
-            const input: Input = this.children.inputSecondName;
-            this.props.errorSecondName = input.validate();
-          }
-        },
+        blur: () => this.validateName(),
       },
     }, 'profile-form__input', 'profile-form__input invalid');
 
@@ -129,12 +188,7 @@ export class ProfileInfoForm extends Form {
       ],
       class: 'profile-form__input',
       events: {
-        blur: () => {
-          if (this.children.inputDisplayName instanceof Input) {
-            const input: Input = this.children.inputDisplayName;
-            this.props.errorDisplayName = input.validate();
-          }
-        },
+        blur: () => this.validateDisplayName(),
       },
     }, 'profile-form__input', 'profile-form__input invalid');
 
@@ -156,10 +210,7 @@ export class ProfileInfoForm extends Form {
       class: 'profile-form__input',
       events: {
         blur: () => {
-          if (this.children.inputPhone instanceof Input) {
-            const input: Input = this.children.inputPhone;
-            this.props.errorPhone = input.validate();
-          }
+          this.validatePhone();
         },
       },
     }, 'profile-form__input', 'profile-form__input invalid');

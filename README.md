@@ -12,6 +12,7 @@
 - Less - препроцессор CSS
 - Eslint - линтер для ts и js
 - Style Lint - линтер для стилей
+
 ---
 ### Запуск и разработка
 Прежде чем приступать к установке проекта, убедитесь, что у вас установлен **git bash и node.js версии не меньше >=12**
@@ -48,5 +49,3 @@ npm run lint
 - Странциа [чата](https://653a6995f3066e000884ade6--animated-melomakarona-48f294.netlify.app/chat)
 - Страница [ошибки 404](https://653a6995f3066e000884ade6--animated-melomakarona-48f294.netlify.app/error404)
 - Страница [ошибки 500](https://653a6995f3066e000884ade6--animated-melomakarona-48f294.netlify.app/error500)
-
-

@@ -11,6 +11,36 @@ export class Profile extends Block {
   }
 
   protected init() {
+    this.children.editInfo = new Link({
+      attributes: [
+        {
+          name: 'class',
+          value: 'text_info',
+        },
+      ],
+      text: "Изменить данные",
+      events: {
+        click: () => {
+          router.go('/settings-info')
+        },
+      },
+    })
+
+    this.children.editPassword = new Link({
+      attributes: [
+        {
+          name: 'class',
+          value: 'text_info',
+        },
+      ],
+      text: "Изменить пароль",
+      events: {
+        click: () => {
+          router.go('/settings-password')
+        },
+      },
+    })
+
     this.children.logout = new Link({
       attributes: [
         {

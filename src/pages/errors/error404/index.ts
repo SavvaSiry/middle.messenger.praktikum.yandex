@@ -1,6 +1,18 @@
-import * as Handlebars from "handlebars";
-import {tmpl} from "./error404.tmpl";
+import { tmpl } from './error404.tmpl';
+import Block from '../../../core/Block/Block';
 
-export const Error404 = () => {
-    return Handlebars.compile(tmpl)({})
+// interface ErrorProps {
+//     code: string,
+//     title: string,
+//     link: string,
+// }
+
+export class Error404 extends Block {
+  constructor() {
+    super('div', {});
+  }
+
+  protected render(): DocumentFragment {
+    return this.compile(tmpl, this.props);
+  }
 }

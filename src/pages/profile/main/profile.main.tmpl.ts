@@ -53,9 +53,9 @@ export const tmpl = `
                 <a class="text_info" href="/profile-edit-pass">Изменить пароль</a>
             </li>
             <li class="profile__content__list__item">
-                <a class="text_danger">Выйти</a>
+                {{{logout}}}
             </li>
         </ul>
     </div>
 </div>
-`
+`;

@@ -1,10 +1,17 @@
 ## Чат приложение
-Этот проект представляет собой учебный фронтенд для чата, который находится в стадии разработки. Он разрабатывается с использованием сборщик Vite и шаблонизатор Handlebars
+Этот проект представляет собой учебный фронтенд для чата, который находится в стадии разработки. 
+Он разрабатывается с использованием сборщик Vite и шаблонизатор Handlebars. Так же в проекте 
+используется архитектурный подход MVC, который реализован с помощью супер-класса Block и компонента EventBus,
+который является реализацие паттерна посредник (Mediator).
 
 ### Используемые технологии
 Проект использует следующие технологии:
+- TS - type script
 - Vite - быстрый сборщик для разработки фронтенда.
 - Handlebars - шаблонизатор для удобного создания HTML-шаблонов.
+- Less - препроцессор CSS
+- Eslint - линтер для ts и js
+- Style Lint - линтер для стилей
 
 ---
 ### Запуск и разработка
@@ -25,17 +32,20 @@ npm run dev
 ```bash
 npm run start
 ```
+Запуск линтеров
+```bash
+npm run lint
+```
+
 ### Макет приложения
 Проект в [Figma](https://www.figma.com/file/NvuI2IpdFw0rjGiZroI8Pt/Chat_external_link-(Savva)?type=design&node-id=0%3A1&mode=design&t=3LNtaRPCE6bBLfd2-1)
 
-### Ознакомиться с проектом на [netlify](https://animated-melomakarona-48f294.netlify.app/)
-- Страница [авторизации](https://animated-melomakarona-48f294.netlify.app/login)
-- Страница [регестрации](https://animated-melomakarona-48f294.netlify.app/signin)
-- Страница [профиля](https://animated-melomakarona-48f294.netlify.app/profile)
-- Страница [изменения информации профиля](https://animated-melomakarona-48f294.netlify.app/profile-edit-pass)
-- Страница [изменения пароля](https://animated-melomakarona-48f294.netlify.app/profile-edit-info)
-- Странциа [чата](https://animated-melomakarona-48f294.netlify.app/chat)
-- Страница [ошибки 404](https://animated-melomakarona-48f294.netlify.app/error404)
-- Страница [ошибки 500](https://animated-melomakarona-48f294.netlify.app/error500)
-
-
+### Ознакомиться с проектом на [netlify](https://653a6995f3066e000884ade6--animated-melomakarona-48f294.netlify.app/)
+- Страница [авторизации](https://653a6995f3066e000884ade6--animated-melomakarona-48f294.netlify.app/login)
+- Страница [регестрации](https://653a6995f3066e000884ade6--animated-melomakarona-48f294.netlify.app/signin)
+- Страница [профиля](https://653a6995f3066e000884ade6--animated-melomakarona-48f294.netlify.app/profile)
+- Страница [изменения информации профиля](https://653a6995f3066e000884ade6--animated-melomakarona-48f294.netlify.app/profile-edit-pass)
+- Страница [изменения пароля](https://653a6995f3066e000884ade6--animated-melomakarona-48f294.netlify.app/profile-edit-info)
+- Странциа [чата](https://653a6995f3066e000884ade6--animated-melomakarona-48f294.netlify.app/chat)
+- Страница [ошибки 404](https://653a6995f3066e000884ade6--animated-melomakarona-48f294.netlify.app/error404)
+- Страница [ошибки 500](https://653a6995f3066e000884ade6--animated-melomakarona-48f294.netlify.app/error500)

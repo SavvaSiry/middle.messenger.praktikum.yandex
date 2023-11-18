@@ -1,30 +1,48 @@
-import {Chat} from "./pages/chat";
-import {Login} from "./pages/login";
-import {Signin} from "./pages/signin";
-import {Profile} from "./pages/profile/main";
-import {Error404} from "./pages/errors/error404";
-import {Error500} from "./pages/errors/error500";
-import {ProfileEditInfo} from "./pages/profile/edit/info";
-import {ProfileEditPass} from "./pages/profile/edit/pass";
+import router from './core/Router';
+import AuthController from './controllers/AuthController';
+import { SignIn } from './pages/signin';
+import { SignUp } from './pages/signup';
+import { Profile } from './pages/profile/main';
+import { Chat } from './pages/chat';
 
-const ROUTES: Record<string, string> = {
-    '/': Login(),
-    '/login': Login(),
-    '/signin': Signin(),
-    '/profile': Profile(),
-    '/profile-edit-info': ProfileEditInfo(),
-    '/profile-edit-pass': ProfileEditPass(),
-    '/error404': Error404(),
-    '/error500': Error500(),
-    '/chat': Chat(),
+enum Routes {
+  Index = '/',
+  Register = '/sign-up',
+  Profile = '/settings',
+  Chat = '/messenger'
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const root = document.querySelector('#app');
+window.addEventListener('DOMContentLoaded', async () => {
+  router
+    .use(Routes.Index, SignIn)
+    .use(Routes.Register, SignUp)
+    .use(Routes.Profile, Profile)
+    .use(Routes.Chat, Chat);
 
-    if (root) {
-        if (ROUTES[window.location.pathname])
-            root.innerHTML = ROUTES[window.location.pathname]
-        else root.innerHTML = Error404();
+  let isProtectedRoute = true;
+
+  switch (window.location.pathname) {
+    case Routes.Index:
+    case Routes.Register:
+      isProtectedRoute = false;
+      break;
+  }
+
+  try {
+
+    await AuthController.fetchUser();
+
+    router.start();
+
+    if (!isProtectedRoute) {
+      router.go(Routes.Chat);
     }
-})
+  } catch (e) {
+    console.log(e, 'Here');
+    router.start();
+
+    if (isProtectedRoute) {
+      router.go(Routes.Index);
+    }
+  }
+});

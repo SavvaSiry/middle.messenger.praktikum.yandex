@@ -24,4 +24,27 @@ class SettingsController {
     }
   }
 
+  async editAvatar(data: File) {
+    try {
+      if (this.validateAvatar) {
+        await this.api.editAvatar(data);
+      }
+
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  allowedMimeTypes: string[] = [
+    'image/jpeg',
+    'image/jpg',
+    'image/png',
+    'image/gif',
+    'image/webp',
+  ];
+
+  private validateAvatar(avatar: File): boolean {
+    return this.allowedMimeTypes.includes(avatar.type);
+  }
+
 }

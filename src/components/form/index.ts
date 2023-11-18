@@ -1,4 +1,4 @@
-import Block from '../../utils/Block';
+import Block from '../../core/Block/Block';
 import { Input } from '../input';
 
 export interface FormProps {

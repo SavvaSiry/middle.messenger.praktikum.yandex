@@ -1,5 +1,5 @@
 import { tmpl } from './error404.tmpl';
-import Block from '../../../utils/Block';
+import Block from '../../../core/Block/Block';
 
 // interface ErrorProps {
 //     code: string,

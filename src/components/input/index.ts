@@ -1,4 +1,4 @@
-import Block from '../../utils/Block';
+import Block from '../../core/Block/Block';
 
 interface InputProps {
   attributes: {

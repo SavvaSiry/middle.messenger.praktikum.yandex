@@ -1,5 +1,5 @@
 import { tmpl } from './profile.edit.info.tmpl';
-import Block from '../../../../utils/Block';
+import Block from '../../../../core/Block/Block';
 import { Input } from '../../../../components/input';
 import { ProfileInfoForm } from '../../../../components/form/profile/info';
 

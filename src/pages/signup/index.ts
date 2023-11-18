@@ -1,16 +1,16 @@
-import { tmpl } from './signin.tmpl';
+import { tmpl } from './signup.tmpl';
 import Block from '../../core/Block/Block';
-import { SignInForm } from '../../components/form/signin';
+import { SignUpForm } from '../../components/form/signup';
 
-export class SignIn extends Block {
+export class SignUp extends Block {
   constructor() {
     super('div', {});
   }
 
   protected init() {
-    this.children.loginForm = new SignInForm({
-      class: 'login-form',
+    this.children.signinForm = new SignUpForm({
       attributes: [],
+      class: 'login-form',
     });
   }
 

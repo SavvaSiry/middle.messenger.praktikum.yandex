@@ -1,4 +1,4 @@
-import Block from '../../utils/Block';
+import Block from '../../core/Block/Block';
 import { tmpl } from './index.tmpl';
 
 export class Home extends Block {

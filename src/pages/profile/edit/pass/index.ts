@@ -1,5 +1,5 @@
 import { tmpl } from './profile.edit.pass.tmpl';
-import Block from '../../../../utils/Block';
+import Block from '../../../../core/Block/Block';
 import { ProfilePasswordForm } from '../../../../components/form/profile/pass';
 
 export class ProfileEditPass extends Block {

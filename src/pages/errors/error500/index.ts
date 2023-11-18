@@ -1,5 +1,5 @@
 import { tmpl } from './error500.tmpl';
-import Block from '../../../utils/Block';
+import Block from '../../../core/Block/Block';
 
 export class Error500 extends Block {
   constructor() {

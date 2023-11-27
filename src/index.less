@@ -322,15 +322,18 @@ a {
   width: 25%;
   height: 100%;
   box-sizing: border-box;
-  padding: 0 10px;
   background: @colorGrey;
   border-right: 1px solid @colorGreyAccent;
+
+  //padding: 0 10px;
 }
 
 .chat-panel__header {
   height: auto;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  padding: 0 10px;
 
   .chat-panel__header__link {
     width: 100%;
@@ -361,12 +364,24 @@ a {
 }
 
 .chat-panel__list__item {
-  height: 47px;
+  cursor: pointer;
+  box-sizing: border-box;
+  height: auto;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  padding: 12px 0;
+  padding: 12px 10px;
   border-top: solid 1px @colorGreyAccent;
+
+  &_active {
+    background: @colorChatMessageRight;
+  }
+
+  &:hover {
+    background: @colorChatMessageRight;
+    transition-duration: 100ms;
+  }
 
   .chat-panel__list__item__avatar {
     width: 47px;
@@ -385,6 +400,7 @@ a {
     .text {
       font-size: 14px;
       overflow: hidden;
+      text-overflow: ellipsis;
       height: 30px;
     }
   }
@@ -445,19 +461,75 @@ a {
       font-size: 16px;
     }
   }
+}
 
-  .chat-feed__top-bar__menu {
-    width: 25px;
-    height: 25px;
-    border-radius: 100%;
+.chat-feed__top-bar__menu {
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  background: @colorGreyAccent;
+
+  position: relative;
+
+  .circle {
+    fill: @colorBlueAccent;
+  }
+
+  &:hover .dropdown-list {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    background: @colorGreyAccent;
+  }
 
-    .circle {
-      fill: @colorBlueAccent;
-    }
+  &:hover {
+    background: @colorChatMessageRight;
+  }
+
+  &::after {
+    content: "";
+    background: none;
+    width: 100px;
+    right: 0;
+    height: 80px;
+    position: absolute;
+    z-index: 10;
+  }
+}
+
+.dropdown-list {
+  list-style: none;
+  display: none;
+  position: absolute;
+  width: max-content;
+  height: auto;
+  border-radius: @radiusCard;
+  z-index: 100;
+
+  font-size: 14px;
+
+  gap: 15px;
+
+  box-sizing: border-box;
+  padding: 15px 20px;
+
+  flex-direction: column;
+
+  top: 30px;
+  right: -10px;
+
+  box-shadow: 0 0 5px @colorShadow;
+}
+
+.dropdown-list__item {
+  cursor: pointer;
+
+  &:hover {
+    transition-duration: 150ms;
+    color: @colorBlueAccent;
   }
 }
 

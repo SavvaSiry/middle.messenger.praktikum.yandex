@@ -17,7 +17,7 @@ export class BaseChat extends Block {
 
      let item = new ChatPanelItem({
       attributes: [],
-      class: 'chat-panel__list__item',
+      class: 'chat-panel__list__item chat-panel__list__item_active',
       title: 'Андрей А',
       text: 'Какой-то текст',
       time: '12:23',
@@ -35,7 +35,27 @@ export class BaseChat extends Block {
       avatar: '',
     })
 
-    this.children.chatPanelItems = [item, item2];
+    let item3 = new ChatPanelItem({
+      attributes: [],
+      class: 'chat-panel__list__item',
+      title: 'Андрей D',
+      text: 'DКакой-то текст',
+      time: '12:23',
+      notify: '1',
+      avatar: '',
+    })
+
+    let item4 = new ChatPanelItem({
+      attributes: [],
+      class: 'chat-panel__list__item',
+      title: 'Андрей D',
+      text: 'DКакой-то текст',
+      time: '12:23',
+      notify: '1',
+      avatar: '',
+    })
+
+    this.children.chatPanelItems = [item, item2, item3, item4];
 
 
     this.children.messageForm = new MessageForm({

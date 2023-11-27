@@ -44,6 +44,11 @@ export const tmpl = `
                     <circle class="circle" cx="1.5" cy="8" r="1.5"/>
                     <circle class="circle" cx="1.5" cy="14" r="1.5"/>
                 </svg>
+                <ul class="dropdown-list">
+                    <li class="dropdown-list__item">Добавить пользователя</li>
+                    <li class="dropdown-list__item">Удалить пользователя</li>
+                    <li class="dropdown-list__item">Удалить переписку</li>
+                </ul>
             </div>
         </div>
         

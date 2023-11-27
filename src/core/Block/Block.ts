@@ -145,7 +145,13 @@ class Block<P extends Record<string, any> = any> {
       .emit(Block.EVENTS.FLOW_CDM);
 
     Object.values(this.children)
-      .forEach((child) => child.dispatchComponentDidMount());
+      .forEach((child) => {
+        if (child instanceof Array) {
+          child.forEach((child) => child.dispatchComponentDidMount());
+        } else {
+          child.dispatchComponentDidMount();
+        }
+      });
   }
 
   private _componentDidUpdate(oldProps: P, newProps: P) {
@@ -206,18 +212,17 @@ class Block<P extends Record<string, any> = any> {
       Object.entries(this.children)
         .forEach(([name, component]) => {
           if (component instanceof Array) {
-            contextAndStubs[name] = component.map((item) => `<div data-id="${item.id}"></div>`).join("");
+            contextAndStubs[name] = component.map((item) => `<div data-id="${item.id}"></div>`)
+              .join('');
           } else {
             contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
           }
         });
 
-      console.log(contextAndStubs)
+      console.log(contextAndStubs);
 
       const html = Handlebars.compile(template)(contextAndStubs);
       temp.innerHTML = html;
-
-
 
       const postCompile: Function = (component: Block) => {
         const stub = temp.content.querySelector(`[data-id="${component.id}"]`);

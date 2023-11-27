@@ -3,6 +3,7 @@ import { Input } from '../input';
 
 export interface FormProps {
   class: string,
+  error: string,
   attributes: {
     name: string;
     value: string;

@@ -5,10 +5,13 @@ import store from '../core/Store';
 class SettingsController {
   private api = new SettingsAPI();
 
-  async editProfile(data: IUserSettings) {
+  async editInfo(data: IUserSettings) {
     try {
-      const profile = await this.api.editProfile(data);
-      console.log(profile);
+      const user = await this.api.editProfile(data);
+      console.log(user);
+      store.set('user', user);
+
+      router.go('/settings')
     } catch (e) {
       console.log(e);
     }
@@ -48,3 +51,5 @@ class SettingsController {
   }
 
 }
+
+export default new SettingsController();

@@ -1,29 +1,20 @@
 import { tmpl } from './profile.edit.info.tmpl';
 import Block from '../../../../core/Block/Block';
-import { Input } from '../../../../components/input';
 import { ProfileInfoForm } from '../../../../components/form/profile/info';
+import AuthController from '../../../../controllers/AuthController';
+import store, { State, withStore } from '../../../../core/Store';
 
-export class ProfileEditInfo extends Block {
-  constructor() {
-    super('div', {
-      events: {
-        submit: (event: Event) => {
-          event.preventDefault();
-          Object.entries(this.children)
-            .forEach((child) => {
-              if (child[1] instanceof Input) {
-                child[1].validate();
-              }
-            });
-        },
-      },
-    });
+export class BaseProfileEditInfo extends Block {
+
+  protected componentDidMount(): void {
+    AuthController.fetchUser();
   }
 
   protected init() {
     this.children.profileInfoForm = new ProfileInfoForm({
       class: 'profile-form',
       attributes: [],
+      user: { ...store.getState().user }
     });
   }
 
@@ -31,3 +22,9 @@ export class ProfileEditInfo extends Block {
     return this.compile(tmpl, this.props);
   }
 }
+
+function mapStateToProps(state: State) {
+  return { ...state.user };
+}
+
+export const ProfileEditInfo = withStore(mapStateToProps)(BaseProfileEditInfo);

@@ -5,13 +5,39 @@ import { State, withStore } from '../../core/Store';
 import AuthController from '../../controllers/AuthController';
 import { Link } from '../../components/link';
 import router from '../../core/Router';
+import { ChatPanelItem } from '../../components/chat/pannel/item';
 
 export class BaseChat extends Block {
-  constructor() {
-    super('div', {});
+
+  protected componentDidMount(): void {
+    AuthController.fetchUser();
   }
 
   protected init() {
+
+     let item = new ChatPanelItem({
+      attributes: [],
+      class: 'chat-panel__list__item',
+      title: 'Андрей А',
+      text: 'Какой-то текст',
+      time: '12:23',
+      notify: '1',
+      avatar: '',
+    })
+
+    let item2 = new ChatPanelItem({
+      attributes: [],
+      class: 'chat-panel__list__item',
+      title: 'Андрей D',
+      text: 'DКакой-то текст',
+      time: '12:23',
+      notify: '1',
+      avatar: '',
+    })
+
+    this.children.chatPanelItems = [item, item2];
+
+
     this.children.messageForm = new MessageForm({
       attributes: [],
       class: 'chat-feed__bottom-bar',
@@ -22,7 +48,7 @@ export class BaseChat extends Block {
       text: 'Профиль',
       events: {
         click: () => {
-          router.go('/settings')
+          router.go('/settings');
         },
       },
     });

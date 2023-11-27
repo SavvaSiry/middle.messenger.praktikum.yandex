@@ -17,46 +17,11 @@ export const tmpl = `
             </div>
         </div>
         <div class="profile__content__username text_dark">
-            Иван
+            {{ first_name }}
         </div>
         
         {{{profileInfoForm}}}
-<!--        <form class="profile-form">-->
-<!--            <ul class="profile__content__list">-->
-<!--                <li class="profile__content__list__item">-->
-<!--                    <label class="text_dark" for="email">Почта</label>-->
-<!--                    {{{inputEmail}}}-->
-<!--&lt;!&ndash;                    <input class="profile-form__input text_light" name="email" type="text" placeholder="example@mail.ru">&ndash;&gt;-->
-<!--                </li>-->
-<!--                <li class="profile__content__list__item">-->
-<!--                    <label class="text_dark" for="login">Логин</label>-->
-<!--                    {{{inputLogin}}}-->
-<!--&lt;!&ndash;                    <input class="profile-form__input text_light" name="login" type="text" placeholder="example">&ndash;&gt;-->
-<!--                </li>-->
-<!--                <li class="profile__content__list__item">-->
-<!--                    <label class="text_dark" for="first_name">Имя</label>-->
-<!--                    {{{inputUsername}}}-->
-<!--&lt;!&ndash;                    <input class="profile-form__input text_light" name="first_name" type="text" placeholder="Иван">&ndash;&gt;-->
-<!--                </li>-->
-<!--                <li class="profile__content__list__item">-->
-<!--                    <label class="text_dark" for="second_name">Фамилия</label>-->
-<!--                    {{{inputSecondName}}}-->
-<!--&lt;!&ndash;                    <input class="profile-form__input text_light" name="second_name" type="text" placeholder="Иванов">&ndash;&gt;-->
-<!--                </li>-->
-<!--                <li class="profile__content__list__item">-->
-<!--                    <label class="text_dark" for="display_name">Имя в чате</label>-->
-<!--                    {{{displayName}}}-->
-<!--&lt;!&ndash;                    <input class="profile-form__input text_light" name="display_name" type="text" placeholder="Иван">&ndash;&gt;-->
-<!--                </li>-->
-<!--                <li class="profile__content__list__item">-->
-<!--                    <label class="text_dark" for="phone">Телефон</label>-->
-<!--                    {{{inputPhone}}}-->
-<!--&lt;!&ndash;                    <input class="profile-form__input text_light" name="phone" type="text" placeholder="123-321-123">&ndash;&gt;-->
-<!--                </li>-->
-<!--            </ul>-->
-<!--            {{{button}}}-->
-<!--            <button class="button" type="submit">Сохранить</button>-->
-<!--        </form>-->
+        
     </div>
 </div>
 `;

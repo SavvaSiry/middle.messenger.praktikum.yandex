@@ -13,7 +13,7 @@ class AuthController {
 
       router.go('/messenger');
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   }
 
@@ -45,6 +45,8 @@ class AuthController {
       const user = await this.api.getUser();
 
       store.set('user', user);
+
+      console.log(user)
 
     } catch (error) {
       throw error;

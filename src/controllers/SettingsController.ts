@@ -5,10 +5,13 @@ import store from '../core/Store';
 class SettingsController {
   private api = new SettingsAPI();
 
-  async editProfile(data: IUserSettings) {
+  async editInfo(data: IUserSettings) {
     try {
-      const profile = await this.api.editProfile(data);
-      console.log(profile);
+      const user = await this.api.editProfile(data);
+      console.log(user);
+      store.set('user', user);
+
+      router.go('/settings')
     } catch (e) {
       console.log(e);
     }
@@ -24,4 +27,29 @@ class SettingsController {
     }
   }
 
+  async editAvatar(data: File) {
+    try {
+      if (this.validateAvatar) {
+        await this.api.editAvatar(data);
+      }
+
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  allowedMimeTypes: string[] = [
+    'image/jpeg',
+    'image/jpg',
+    'image/png',
+    'image/gif',
+    'image/webp',
+  ];
+
+  private validateAvatar(avatar: File): boolean {
+    return this.allowedMimeTypes.includes(avatar.type);
+  }
+
 }
+
+export default new SettingsController();

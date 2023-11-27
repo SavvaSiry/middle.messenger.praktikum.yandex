@@ -16,7 +16,7 @@ class Block<P extends Record<string, any> = any> {
 
   protected props: P;
 
-  public children: Record<string, Block>;
+  public children: Record<string, Block> | Record<string, Block>[];
 
   private eventBus: () => EventBus;
 
@@ -145,7 +145,13 @@ class Block<P extends Record<string, any> = any> {
       .emit(Block.EVENTS.FLOW_CDM);
 
     Object.values(this.children)
-      .forEach((child) => child.dispatchComponentDidMount());
+      .forEach((child) => {
+        if (child instanceof Array) {
+          child.forEach((child) => child.dispatchComponentDidMount());
+        } else {
+          child.dispatchComponentDidMount();
+        }
+      });
   }
 
   private _componentDidUpdate(oldProps: P, newProps: P) {
@@ -188,10 +194,10 @@ class Block<P extends Record<string, any> = any> {
 
   /* ВАЖНО:
   * Ниже был добавлен костыль с блокировкой потока на выполнение, так как
-  * event "SUBMIT" - при нажатии на ENTER вызывает, так же событие "BLUR", что
+  * event "SUBMIT" - при нажатии на ENTER вызывает событие "BLUR", что
   * приводит к одновременному обновлению данных двумя потоками, что в конечном
   * итоге приводит к ошибке, так как первый поток заканчивает обновление раньше,
-  * второй обновляет уже не существующие данные, из-за чего происходит ошибка
+  * а второй поток обновляет уже не существующие данные
   *  */
   private isExecuting: boolean = false;
 
@@ -205,25 +211,38 @@ class Block<P extends Record<string, any> = any> {
 
       Object.entries(this.children)
         .forEach(([name, component]) => {
-          contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
+          if (component instanceof Array) {
+            contextAndStubs[name] = component.map((item) => `<div data-id="${item.id}"></div>`)
+              .join('');
+          } else {
+            contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
+          }
         });
 
-      const html = Handlebars.compile(template)(contextAndStubs);
+      console.log(contextAndStubs);
 
+      const html = Handlebars.compile(template)(contextAndStubs);
       temp.innerHTML = html;
+
+      const postCompile: Function = (component: Block) => {
+        const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
+        if (!stub) {
+          return;
+        }
+
+        component.getContent()
+          ?.append(...Array.from(stub.childNodes));
+
+        stub.replaceWith(component.getContent()!);
+      };
 
       Object.entries(this.children)
         .forEach(([, component]) => {
-          const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
-
-          if (!stub) {
-            return;
+          if (component instanceof Array) {
+            component.forEach(postCompile);
+          } else {
+            postCompile(component);
           }
-
-          component.getContent()
-            ?.append(...Array.from(stub.childNodes));
-
-          stub.replaceWith(component.getContent()!);
         });
 
       this.isExecuting = false;

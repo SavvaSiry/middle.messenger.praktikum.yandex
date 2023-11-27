@@ -6,14 +6,15 @@ interface InputProps {
     value: string
   }[],
   class: string,
+  text: string,
   events?: {
     blur: () => void,
   }
 }
 
 export class Input extends Block {
-  protected classValid: string;
 
+  protected classValid: string;
   protected classInvalid: string;
 
   constructor(props: InputProps, classValid: string, classInvalid: string) {
@@ -50,5 +51,11 @@ export class Input extends Block {
 
   get name() {
     return (this.element! as HTMLInputElement).name;
+  }
+
+  render(): DocumentFragment {
+    return this.compile(`
+    {{text}}
+    `, this.props);
   }
 }

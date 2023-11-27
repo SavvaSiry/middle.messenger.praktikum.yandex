@@ -13,6 +13,7 @@ interface FormData {
 }
 
 export class SignInForm extends Form {
+
   constructor(props: FormProps) {
     if (!props.events) {
       props.events = {
@@ -22,7 +23,7 @@ export class SignInForm extends Form {
     super(props);
   }
 
-  onSubmit(event: Event) {
+  async onSubmit(event: Event) {
     event.preventDefault();
 
     this.validateLogin();
@@ -37,7 +38,12 @@ export class SignInForm extends Form {
 
     console.log(data);
 
-    AuthController.signin(data as ISignInData);
+    try {
+      await AuthController.signin(data as ISignInData);
+    } catch (error) {
+      this.props.error = error.reason;
+    }
+
   }
 
   validateLogin() {
@@ -127,6 +133,8 @@ export class SignInForm extends Form {
             {{{inputPassword}}}
             <span class="login-form__error">{{errorMessagePassword}}</span>
         </div>
+        
+        <div class="text text_small text_danger">{{ error }}</div>
         
     </div>
     <div class="card__container">

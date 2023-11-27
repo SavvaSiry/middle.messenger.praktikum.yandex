@@ -4,40 +4,60 @@ import { InputPhone } from '../../../input/phone';
 import { InputEmail } from '../../../input/email';
 import { InputLogin } from '../../../input/login';
 import { InputName } from '../../../input/name';
-import { Form, FormProps } from '../../index';
+import { Form } from '../../index';
+import { IUser } from '../../../../api/AuthAPI';
+import SettingsController from '../../../../controllers/SettingsController';
+import { IUserSettings } from '../../../../api/SettingsAPI';
+
 
 interface FormData {
   [key: string]: string;
 }
 
+interface ProfileInfoProps {
+  class: string,
+  attributes: {
+    name: string;
+    value: string;
+  }[],
+  user: IUser,
+  events?: {
+    submit: (event: Event) => void;
+  };
+}
+
 export class ProfileInfoForm extends Form {
-  constructor(props: FormProps) {
+  constructor(props: ProfileInfoProps) {
     if (!props.events) {
       props.events = {
-        submit: (event: Event) => {
-          event.preventDefault();
-
-          this.validateEmail();
-          this.validateLogin();
-          this.validateName();
-          this.validateUsername();
-          this.validateDisplayName();
-          this.validatePhone();
-
-          const data: FormData = {};
-
-          Object.entries(this.children)
-            .forEach((child) => {
-              if (child[1] instanceof Input) {
-                data[child[1].name] = child[1].value;
-              }
-            });
-
-          console.log(data);
-        },
+        submit: (event: Event) => this.onSubmit(event),
       };
     }
     super(props);
+  }
+
+  private onSubmit(event: Event) {
+    event.preventDefault();
+
+    this.validateEmail();
+    this.validateLogin();
+    this.validateName();
+    this.validateUsername();
+    this.validateDisplayName();
+    this.validatePhone();
+
+    const data: FormData = {};
+
+    Object.entries(this.children)
+      .forEach((child) => {
+        if (child[1] instanceof Input) {
+          data[child[1].name] = child[1].value;
+        }
+      });
+
+    console.log("SUBMIT!");
+
+    SettingsController.editInfo(data as IUserSettings);
   }
 
   validateEmail() {
@@ -82,6 +102,14 @@ export class ProfileInfoForm extends Form {
     }
   }
 
+  private getUserInfo(propName: string): string {
+    if (this.props.user[propName] !== undefined && this.props.user[propName] !== null)
+      return this.props.user[propName];
+
+
+    return '';
+  }
+
   protected init() {
     this.children.inputEmail = new InputEmail({
       attributes: [
@@ -96,6 +124,10 @@ export class ProfileInfoForm extends Form {
         {
           name: 'type',
           value: 'text',
+        },
+        {
+          name: 'value',
+          value: this.getUserInfo('email'),
         },
       ],
       class: 'profile-form__input',
@@ -118,6 +150,10 @@ export class ProfileInfoForm extends Form {
           name: 'type',
           value: 'text',
         },
+        {
+          name: 'value',
+          value: this.getUserInfo('login'),
+        },
       ],
       class: 'profile-form__input',
       events: {
@@ -139,6 +175,10 @@ export class ProfileInfoForm extends Form {
           {
             name: 'type',
             value: 'text',
+          },
+          {
+            name: 'value',
+            value: this.getUserInfo('first_name'),
           },
         ],
         class: 'profile-form__input',
@@ -164,6 +204,10 @@ export class ProfileInfoForm extends Form {
           name: 'type',
           value: 'text',
         },
+        {
+          name: 'value',
+          value: this.getUserInfo('second_name'),
+        },
       ],
       class: 'profile-form__input',
       events: {
@@ -185,6 +229,10 @@ export class ProfileInfoForm extends Form {
           name: 'type',
           value: 'text',
         },
+        {
+          name: 'value',
+          value: this.getUserInfo('display_name'),
+        },
       ],
       class: 'profile-form__input',
       events: {
@@ -205,6 +253,10 @@ export class ProfileInfoForm extends Form {
         {
           name: 'type',
           value: 'text',
+        },
+        {
+          name: 'value',
+          value: this.getUserInfo('phone'),
         },
       ],
       class: 'profile-form__input',

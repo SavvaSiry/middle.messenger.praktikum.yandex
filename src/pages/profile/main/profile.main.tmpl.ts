@@ -17,40 +17,40 @@ export const tmpl = `
             </div>
         </div>
         <div class="profile__content__username text_dark">
-            Иван
+            {{ first_name }}
         </div>
         <ul class="profile__content__list">
             <li class="profile__content__list__item">
                 <span class="text_dark">Почта</span>
-                <span class="text_light">example@gmail.com</span>
+                <span class="text_light">{{ email }}</span>
             </li>
             <li class="profile__content__list__item">
                 <span class="text_dark">Логин</span>
-                <span class="text_light">example</span>
+                <span class="text_light">{{ login }}</span>
             </li>
             <li class="profile__content__list__item">
                 <span class="text_dark">Имя</span>
-                <span class="text_light">Иван</span>
+                <span class="text_light">{{ first_name }}</span>
             </li>
             <li class="profile__content__list__item">
                 <span class="text_dark">Фамилия</span>
-                <span class="text_light">Иванов</span>
+                <span class="text_light">{{ second_name}}</span>
             </li>
             <li class="profile__content__list__item">
                 <span class="text_dark">Имя в чате</span>
-                <span class="text_light">Иван</span>
+                <span class="text_light">{{ display_name }}</span>
             </li>
             <li class="profile__content__list__item">
                 <span>Телефон</span>
-                <span class="text_light">+7 (999) 100 90 90</span>
+                <span class="text_light">{{ phone }}</span>
             </li>
         </ul>
         <ul class="profile__content__list">
             <li class="profile__content__list__item">
-                <a class="text_info" href="/profile-edit-info">Изменить данные</a>
+                {{{editInfo}}}
             </li>
             <li class="profile__content__list__item">
-                <a class="text_info" href="/profile-edit-pass">Изменить пароль</a>
+                {{{editPassword}}}
             </li>
             <li class="profile__content__list__item">
                 {{{logout}}}
